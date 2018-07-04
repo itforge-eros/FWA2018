@@ -14,15 +14,16 @@ import routes from './asyncRoutes';
 import Header from './common/components/Header';
 import Footer from './common/components/Footer';
 
+// work components
+import Profilemin from './components/ProfileBlock/ProfileBlock'
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <div className="App">
-            <Header />
-            <div className="wrap">{routes}</div>
-            <Footer />
+            <Profilemin />
           </div>
         </ConnectedRouter>
       </Provider>
