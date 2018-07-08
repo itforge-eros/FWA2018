@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import { Button, Container, Row, Col } from 'reactstrap';
 import './namelist.css'
+import Imagebox from '../ImageBox/ImageBox';
 
 class Namelist extends Component {
   render() {
@@ -26,6 +27,11 @@ class Namelist extends Component {
               </Col>
               <Col xs="3" className="yearbutton-container4">
                 <Button color="warning">ปี 4</Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="hunted-container">
+                <Imagebox />
               </Col>
             </Row>
           </Container>
