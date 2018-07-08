@@ -16,9 +16,10 @@ import Header from './common/components/Header';
 import Footer from './common/components/Footer';
 
 // work components
-import Profilemin from './components/ProfileBlock/ProfileBlock'
-import Profile from './components/ProfileMain/Profile'
-import Namelist from './components/Namelist/NamelistMain'
+import Profilemin from './components/ProfileBlock/ProfileBlock';
+import Profile from './components/ProfileMain/Profile';
+import Namelist from './components/Namelist/NamelistMain';
+import News from './components/News/news';
 
 class App extends Component {
   render() {
@@ -36,8 +37,15 @@ class App extends Component {
                 <Col className="mainsort-container">
                   <Profile stu_id="60070098"/>
                 </Col>
-                <Col className="mainsort-container">
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
                   <Profilemin stu_id="60070098"/>
+                </Col>
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
+                  <News />
                 </Col>
               </Row>
             </Container>
