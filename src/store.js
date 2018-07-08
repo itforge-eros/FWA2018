@@ -11,7 +11,7 @@ import queryString from 'query-string';
 // export `history` to use in index.js, we using `createBrowserHistory`
 export const history = createHistory();
 
-const epicMiddleware = createEpicMiddleware(rootEpic, {
+const epicMiddleware = createEpicMiddleware({
   dependencies: {
     queryString
   }
@@ -20,6 +20,13 @@ const epicMiddleware = createEpicMiddleware(rootEpic, {
 // Build the middleware for intercepting and dispatching navigation actions
 const appRouterMiddleware = routerMiddleware(history);
 
-const store = createStore(rootReducer, applyMiddleware(epicMiddleware), applyMiddleware(appRouterMiddleware));
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(epicMiddleware),
+  applyMiddleware(appRouterMiddleware)
+);
+
+epicMiddleware.run(rootEpic);
 
 export default store;
