@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './queststyle.css';
 import { Container, Row, Col, Button } from 'reactstrap';
+import Questpath from '../QuestPath/questpath';
 
 class Quests extends Component {
   constructor(){
@@ -20,7 +21,7 @@ class Quests extends Component {
             <h1>Quests</h1>
           </div>
           <div className="questpath-container">
-            <h5>hi</h5>
+            <Questpath />
           </div>
           <Container className="quests-container">
           <Row>
