@@ -16,10 +16,13 @@ import Header from './common/components/Header';
 import Footer from './common/components/Footer';
 
 // work components
-import Profilemin from './components/ProfileBlock/ProfileBlock';
-import Profile from './components/ProfileMain/Profile';
-import Namelist from './components/Namelist/NamelistMain';
-import News from './components/News/news';
+import Newsblock from './components/NewsBlock/newsblock';
+import Profileblock from './components/ProfileBlock/profileblock';
+import Mainquestblock from './components/MainQuestBlock/mainquestblock';
+
+import Profile from './components/Profile/profile';
+import Namelist from './components/Namelist/namelist';
+import Editprofile from './components/EditProfile/editprofile';
 
 class App extends Component {
   render() {
@@ -40,12 +43,22 @@ class App extends Component {
               </Row>
               <Row>
               <Col className="mainsort-container">
-                  <Profilemin stu_id="60070098"/>
+                  <Profileblock stu_id="60070098"/>
                 </Col>
               </Row>
               <Row>
               <Col className="mainsort-container">
-                  <News />
+                  <Newsblock />
+                </Col>
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
+                  <Editprofile />
+                </Col>
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
+                  <Mainquestblock />
                 </Col>
               </Row>
             </Container>

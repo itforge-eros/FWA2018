@@ -1,8 +1,8 @@
 import React , { Component } from 'react';
-import './news.css'
+import './newsstyle.css'
 import Newspic from './bg_night.jpg'
 
-class News extends Component {
+class Newsblock extends Component {
   render() {
     return (
       <div className="news-container">
@@ -17,4 +17,4 @@ class News extends Component {
   }
 }
 
-export default News;
+export default Newsblock;

@@ -3,7 +3,7 @@ import './pfblockstyle.css';
 import Profilepics from './profile_icon_withstroke.png';
 import { Button, Container, Row, Col } from 'reactstrap';
 
-class Profilemin extends Component {
+class Profileblock extends Component {
   constructor(){
     super();
     this.state = {
@@ -51,4 +51,4 @@ class Profilemin extends Component {
   }
 }
 
-export default Profilemin;
+export default Profileblock;

@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { Button, Container, Row, Col } from 'reactstrap';
-import './namelist.css'
-import Imagebox from '../ImageBox/ImageBox';
+import './nameliststyle.css'
+import Imagebox from '../ImageBox/imagebox';
 
 class Namelist extends Component {
   render() {

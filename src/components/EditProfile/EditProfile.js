@@ -1,17 +1,35 @@
 import React , { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import './editpfstyle.css'
 
 class Editprofile extends Component {
   render() {
     return (
-      <div className="news-container">
-        <div className="news-header">
-          <h1>News</h1>
+      <div className="editprofile-container">
+        <div className="editprofile-header">
+          <h1>แก้ไขโปรไฟล์</h1>
         </div>
-        <div className="newspic-container">
-          <img src={Newspic}/>
+        <Form>
+          <FormGroup className="ChangeNickname">
+            <Label>ชื่อเล่น</Label>
+            <Input />
+          </FormGroup>
+          <FormGroup className="SelectBranch">
+            <Label>สาขา</Label>
+            <Input type="select" name="select">
+              <option>IT</option>
+              <option>DSBA</option>
+              <option>BIT</option>
+            </Input>
+          </FormGroup>
+          <FormGroup className="LilbitText">
+            <Label for="exampleText">แนะนำตัวสั้นๆกันหน่อย!</Label>
+            <Input type="textarea" name="text"/>
+        </FormGroup>
+        <div className="Submitpf-btn">
+          <Button>ยืนยัน</Button>
         </div>
+        </Form>
       </div>
     );
   }

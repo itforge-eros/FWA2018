@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col} from 'reactstrap';
 import Huntedpic from './mockup-profilepic.jpg';
 
-import './Imagebox.css';
+import './imageboxstyle.css';
 
 class Imagebox extends Component {
   render() {
