@@ -7,7 +7,7 @@ class Editprofile extends Component {
     return (
       <div className="editprofile-container">
         <div className="editprofile-header">
-          <h1>แก้ไขโปรไฟล์</h1>
+          <h1>Edit Profile</h1>
         </div>
         <Form>
           <FormGroup className="ChangeNickname">
@@ -16,7 +16,7 @@ class Editprofile extends Component {
           </FormGroup>
           <FormGroup className="SelectBranch">
             <Label>สาขา</Label>
-            <Input type="select" name="select">
+            <Input type="select" name="branch">
               <option>IT</option>
               <option>DSBA</option>
               <option>BIT</option>

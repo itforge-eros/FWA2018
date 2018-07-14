@@ -23,6 +23,7 @@ import Mainquestblock from './components/MainQuestBlock/mainquestblock';
 import Profile from './components/Profile/profile';
 import Namelist from './components/Namelist/namelist';
 import Editprofile from './components/EditProfile/editprofile';
+import Quests from './components/Quests/quests';
 
 class App extends Component {
   render() {
@@ -33,22 +34,22 @@ class App extends Component {
             <Container>
               <Row>
                 <Col className="mainsort-container">
-                  <Namelist />
+                <Newsblock />
                 </Col>
               </Row>
               <Row>
                 <Col className="mainsort-container">
-                  <Profile stu_id="60070098"/>
-                </Col>
-              </Row>
-              <Row>
-              <Col className="mainsort-container">
                   <Profileblock stu_id="60070098"/>
                 </Col>
               </Row>
               <Row>
+                <Col className="mainsort-container">
+                  <Mainquestblock />
+                </Col>
+              </Row>
+              <Row>
               <Col className="mainsort-container">
-                  <Newsblock />
+                  <Profile stu_id="60070098"/>
                 </Col>
               </Row>
               <Row>
@@ -58,7 +59,12 @@ class App extends Component {
               </Row>
               <Row>
               <Col className="mainsort-container">
-                  <Mainquestblock />
+                  <Namelist />
+                </Col>
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
+                  <Quests />
                 </Col>
               </Row>
             </Container>
