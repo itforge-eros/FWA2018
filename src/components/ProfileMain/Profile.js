@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './mainstyle.css';
+import './pfmainstyle.css';
 import Profilepics from './profile_icon_withstroke.png';
 import { Button, Container, Row, Col } from 'reactstrap';
 

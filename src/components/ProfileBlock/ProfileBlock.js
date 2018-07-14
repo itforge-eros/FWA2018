@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './blockstyle.css';
+import './pfblockstyle.css';
 import Profilepics from './profile_icon_withstroke.png';
 import { Button, Container, Row, Col } from 'reactstrap';
 
