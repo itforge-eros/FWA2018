@@ -20,8 +20,8 @@ class Profile extends Component {
 
   render() {
     return (
-      <div id="pm-box">
-        <div id="pm-header">
+      <div className="profilemain-container">
+        <div className="profilemain-header">
           <h1>Profile</h1>
         </div>
         <Container>
@@ -30,8 +30,8 @@ class Profile extends Component {
               <img src={Profilepics}/>
             </Col>
             <Col lg="10" md="8" className="profileheader-container">
-              <h1 id="nickname">{this.state.nickname}</h1>
-              <h1 id="fullname">{this.state.firstname} {this.state.lastname}</h1>
+              <h1 id="nickname-main">{this.state.nickname}</h1>
+              <h1 id="fullname-main">{this.state.firstname} {this.state.lastname}</h1>
             </Col>
           </Row>
           <Row>
@@ -52,11 +52,11 @@ class Profile extends Component {
               <Row>
                 <Col className="quest-status1">
                   <h4>หลัก</h4>
-                  <h2>{this.state.mainquest}</h2>
+                  <h2 id="number-pass">{this.state.mainquest}</h2>
                 </Col>
                 <Col  className="quest-status2">
-                  <h4>Special</h4>
-                  <h2>{this.state.subquest}</h2>
+                  <h4>พิเศษ</h4>
+                  <h2 id="number-pass">{this.state.subquest}</h2>
                 </Col>
               </Row>
             </Col>

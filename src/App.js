@@ -11,10 +11,6 @@ import './App.css';
 // routes
 import routes from './asyncRoutes';
 
-// common components
-import Header from './common/components/Header';
-import Footer from './common/components/Footer';
-
 // work components
 import Newsblock from './components/NewsBlock/newsblock';
 import Profileblock from './components/ProfileBlock/profileblock';
@@ -24,6 +20,9 @@ import Profile from './components/Profile/profile';
 import Namelist from './components/Namelist/namelist';
 import Editprofile from './components/EditProfile/editprofile';
 import Quests from './components/Quests/quests';
+import Scan from './components/Scan/scan';
+import Myqrcode from './components/MyQrCode/myqrcode';
+import Entercode from './components/Entercode/entercode';
 
 class App extends Component {
   render() {
@@ -65,6 +64,21 @@ class App extends Component {
               <Row>
               <Col className="mainsort-container">
                   <Quests />
+                </Col>
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
+                  <Scan />
+                </Col>
+              </Row>
+              <Row>
+              <Col className="mainsort-container">
+                  <Myqrcode />
+                </Col>
+              </Row>
+              <Row>
+                <Col className="mainsort-container">
+                  <Entercode />
                 </Col>
               </Row>
             </Container>

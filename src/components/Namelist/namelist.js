@@ -12,7 +12,7 @@ class Namelist extends Component {
         </div>
         <div className="namelist-container">
           <div className="namelist-header">
-            <h1>Name list</h1>
+            <h2>Name list</h2>
           </div>
           <Container>
             <Row>

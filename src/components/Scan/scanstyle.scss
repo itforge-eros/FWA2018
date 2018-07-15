@@ -1,0 +1,39 @@
+.scanqr-container {
+  background: #a2d5ff;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 1em;
+  border-radius: 15px;
+  box-shadow: 0px 10px #5faff0; }
+
+.scanqr-header {
+  background-color: #00578a;
+  padding: 0.1px;
+  color: #f7f7f7;
+  text-align: center;
+  box-shadow: 0px 10px #83c3f7;
+  border-radius: 15px;
+  font-family: 'Press Start 2P', cursive;
+  padding-top: 0.5em;
+ }
+
+.entercode-container {
+  margin-top: 1.3em; }
+
+.entercode-container Button {
+  width: 100%;
+  font-family: 'Press Start 2P', cursive;
+ }
+
+.myqrbutton-container {
+  text-align: right;
+  padding-top: 1em;
+}
+
+.myqrbutton-container Button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+}

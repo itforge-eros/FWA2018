@@ -16,27 +16,27 @@ class Mainquestblock extends Component {
     return (
       <div className="mqblock-container">
         <div className="mqblock-header">
-          <h1>Main Quest</h1>
+          <h3>Main Quest</h3>
         </div>
         <Container>
           <Row>
             <Col>
               <div className="quest-container">
-                <h3>◆ {this.state.quest1}</h3>
+                <h4>◆ {this.state.quest1}</h4>
               </div>
             </Col>
           </Row>
           <Row>
             <Col>
               <div className="quest-container">
-                <h3>◆ {this.state.quest2}</h3>
+                <h4>◆ {this.state.quest2}</h4>
               </div>
             </Col>
           </Row>
           <Row>
             <Col>
               <div className="quest-container">
-                <h3>◆ {this.state.quest3}</h3>
+                <h4>◆ {this.state.quest3}</h4>
               </div>
             </Col>
           </Row>

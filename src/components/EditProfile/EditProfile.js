@@ -7,7 +7,7 @@ class Editprofile extends Component {
     return (
       <div className="editprofile-container">
         <div className="editprofile-header">
-          <h1>Edit Profile</h1>
+          <h3>Edit Profile</h3>
         </div>
         <Form>
           <FormGroup className="ChangeNickname">

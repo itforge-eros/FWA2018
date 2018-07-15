@@ -17,8 +17,8 @@ class Profileblock extends Component {
 
   render() {
     return (
-      <div id="pb-box">
-        <div id="pb-header">
+      <div className="profileblock-container">
+        <div className="profileblock-header">
           <h1>Profile</h1>
         </div>
         <Container>
@@ -27,8 +27,8 @@ class Profileblock extends Component {
               <img src={Profilepics}/>
             </Col>
             <Col lg="10" md="8" className="profileheader-container">
-              <h1 id="nickname">{this.state.nickname}</h1>
-              <h1 id="fullname">{this.state.firstname} {this.state.lastname}</h1>
+              <h1 id="nickname-block">{this.state.nickname}</h1>
+              <h1 id="fullname-block">{this.state.firstname} {this.state.lastname}</h1>
             </Col>
           </Row>
           <Row>
