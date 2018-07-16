@@ -13,9 +13,15 @@ const Home = Loadable({
   loading: AppLoader
 });
 
+const EditProfile = Loadable({
+  loader: () => import('./profile/edit/index.js'),
+  loading: AppLoader
+});
+
 export default (
   <Switch>
     <Route exact path="/" component={Home} />
+    <Route path="/profile/edit" component={EditProfile} />
     <Route path="*" component={PageNotFound} />
   </Switch>
 );

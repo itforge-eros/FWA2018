@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Huntedpic from './mockup-profilepic.jpg';
 
 import './imageboxstyle.css';
@@ -11,7 +11,7 @@ class Imagebox extends Component {
         <Row>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image2" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -19,7 +19,7 @@ class Imagebox extends Component {
           </Col>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image3" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -27,33 +27,7 @@ class Imagebox extends Component {
           </Col>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
-            </div>
-            <div className="huntedid-container">
-              <p>60070121</p>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs="4">
-            <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
-            </div>
-            <div className="huntedid-container">
-              <p>60070121</p>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
-            </div>
-            <div className="huntedid-container">
-              <p>60070121</p>
-            </div>
-          </Col>
-          <Col xs="4">
-            <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image4" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -63,7 +37,7 @@ class Imagebox extends Component {
         <Row>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image5" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -71,7 +45,7 @@ class Imagebox extends Component {
           </Col>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image6" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -79,7 +53,7 @@ class Imagebox extends Component {
           </Col>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image2" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -89,7 +63,7 @@ class Imagebox extends Component {
         <Row>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image7" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -97,7 +71,7 @@ class Imagebox extends Component {
           </Col>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image8" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>
@@ -105,7 +79,33 @@ class Imagebox extends Component {
           </Col>
           <Col xs="4">
             <div className="huntedpic-container">
-              <img src={ Huntedpic }/>
+              <img alt="Image9" src={Huntedpic} />
+            </div>
+            <div className="huntedid-container">
+              <p>60070121</p>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs="4">
+            <div className="huntedpic-container">
+              <img alt="Image10" src={Huntedpic} />
+            </div>
+            <div className="huntedid-container">
+              <p>60070121</p>
+            </div>
+          </Col>
+          <Col xs="4">
+            <div className="huntedpic-container">
+              <img alt="Image11" src={Huntedpic} />
+            </div>
+            <div className="huntedid-container">
+              <p>60070121</p>
+            </div>
+          </Col>
+          <Col xs="4">
+            <div className="huntedpic-container">
+              <img alt="Image12" src={Huntedpic} />
             </div>
             <div className="huntedid-container">
               <p>60070121</p>

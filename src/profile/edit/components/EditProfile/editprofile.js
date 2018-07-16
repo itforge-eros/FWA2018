@@ -1,8 +1,8 @@
-import React , { Component } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import './editpfstyle.css'
+import React, { Component } from 'react';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import './editpfstyle.css';
 
-class Editprofile extends Component {
+class EditProfile extends Component {
   render() {
     return (
       <div className="editprofile-container">
@@ -24,15 +24,15 @@ class Editprofile extends Component {
           </FormGroup>
           <FormGroup className="LilbitText">
             <Label for="exampleText">แนะนำตัวสั้นๆกันหน่อย!</Label>
-            <Input type="textarea" name="text"/>
-        </FormGroup>
-        <div className="Submitpf-btn">
-          <Button>ยืนยัน</Button>
-        </div>
+            <Input type="textarea" name="text" />
+          </FormGroup>
+          <div className="Submitpf-btn">
+            <Button>ยืนยัน</Button>
+          </div>
         </Form>
       </div>
     );
   }
 }
 
-export default Editprofile;
+export default EditProfile;
