@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import EditProfile from './components/EditProfile/editprofile.js';
 
 class Home extends Component {
+  // Change title
+  // componentDidMount() {
+  //   document.title = 'Amazing Page';
+  // }
+
   render() {
     return <EditProfile />;
   }

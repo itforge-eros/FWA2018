@@ -4,19 +4,20 @@ import Profilepics from './profile_icon_withstroke.png';
 import { Button, Container, Row, Col } from 'reactstrap';
 
 class Profile extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       score: 10,
-      nickname: "Pok",
-      firstname: "ศุภกิตติ์",
-      lastname: "เธียรธัญญกิจ",
-      branch: "วิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ",
-      introduce: "การที่เราจะประสบความสำเร็จไม่ได้แปลว่า เราจะประสบความสำเร็จ และการที่เราเอาชนะความกลัว ไม่ได้แปลว่าเรากล้าขึ้น",
-      mainquest: "12",
-      subquest: "2"
-      };
-    }
+      nickname: 'Pok',
+      firstname: 'ศุภกิตติ์',
+      lastname: 'เธียรธัญญกิจ',
+      branch: 'วิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ',
+      introduce:
+        'การที่เราจะประสบความสำเร็จไม่ได้แปลว่า เราจะประสบความสำเร็จ และการที่เราเอาชนะความกลัว ไม่ได้แปลว่าเรากล้าขึ้น',
+      mainquest: '12',
+      subquest: '2'
+    };
+  }
 
   render() {
     return (
@@ -27,11 +28,13 @@ class Profile extends Component {
         <Container>
           <Row>
             <Col lg="2" md="4" className="profilepicture-header">
-              <img src={Profilepics}/>
+              <img src={Profilepics} />
             </Col>
             <Col lg="10" md="8" className="profileheader-container">
               <h1 id="nickname-main">{this.state.nickname}</h1>
-              <h1 id="fullname-main">{this.state.firstname} {this.state.lastname}</h1>
+              <h1 id="fullname-main">
+                {this.state.firstname} {this.state.lastname}
+              </h1>
             </Col>
           </Row>
           <Row>
@@ -54,7 +57,7 @@ class Profile extends Component {
                   <h4>หลัก</h4>
                   <h2 id="number-pass">{this.state.mainquest}</h2>
                 </Col>
-                <Col  className="quest-status2">
+                <Col className="quest-status2">
                   <h4>พิเศษ</h4>
                   <h2 id="number-pass">{this.state.subquest}</h2>
                 </Col>
@@ -63,7 +66,9 @@ class Profile extends Component {
           </Row>
           <Row>
             <Col className="btn-container">
-              <Button color="secondary" size="lg">แก้ไขโปรไฟล์</Button>
+              <Button color="secondary" size="lg">
+                แก้ไขโปรไฟล์
+              </Button>
             </Col>
           </Row>
         </Container>

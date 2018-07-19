@@ -1,8 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
+import store, { history, persistor } from './store';
 import { Container } from 'reactstrap';
+
+import { PersistGate } from 'redux-persist/integration/react';
 
 // Styles
 import 'bootstrap/dist/css/bootstrap.css';
@@ -26,10 +28,11 @@ import routes from './asyncRoutes';
 
 const App = () => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div className="App">
-        <Container>{routes}</Container>
-        {/* <Container>
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <div className="App">
+          <Container>{routes}</Container>
+          {/* <Container>
               <Row>
                 <Col className="mainsort-container">
                   <Newsblock />
@@ -81,8 +84,9 @@ const App = () => (
                 </Col>
               </Row>
             </Container> */}
-      </div>
-    </ConnectedRouter>
+        </div>
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>
 );
 
