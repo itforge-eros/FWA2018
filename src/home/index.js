@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
-import { Container } from 'reactstrap';
-import UserRepos from './containers/UserRepos';
+import React from 'react';
+import { connect } from 'react-redux';
+import { lifecycle, compose } from 'recompose';
+
+import LoginBlock from './components/LoginBlock/LoginBlock';
+// import UserRepos from './containers/UserRepos';
 import './style.css';
 
-class Home extends Component {
-	render() {
-		return (
-			<div id="home">
-				<Container>
-					<h2 className="text-center">Home</h2>
-					<UserRepos />
-				</Container>
-			</div>
-		);
-	}
-}
+const enhance = compose(
+  connect(
+    (state) => state,
+    {}
+  ),
+  lifecycle({
+    componentDidMount() {
+      document.title = 'Freshy IT 2018 | Home';
+    }
+  })
+);
+const Home = () => <LoginBlock />;
 
-export default Home;
+export default enhance(Home);
