@@ -6,7 +6,7 @@ import { routerMiddleware } from 'react-router-redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// import root epics/reducer
+// import root reducer
 import rootReducer from './rootReducer';
 
 const persistConfig = {
@@ -28,7 +28,5 @@ const store = createStore(
 );
 
 export let persistor = persistStore(store);
-
-// epicMiddleware.run(rootEpic);
 
 export default persistor;
