@@ -5,41 +5,40 @@ import Lockquest from './lockquest_icon.jpg';
 import Passquest from './passquest_icon.jpg';
 
 class Questpath extends Component {
-
   render() {
     return (
       <Container>
         <Row>
           <Col xs="4">
             <div className="queststatus-container">
-              <img src={ Passquest }/>
+              <img src={Passquest} />
             </div>
           </Col>
           <Col xs="4">
             <div className="queststatus-container">
-              <img src={ Passquest }/>
+              <img src={Passquest} />
             </div>
           </Col>
           <Col xs="4">
             <div className="queststatus-container">
-              <img src={ Passquest }/>
+              <img src={Passquest} />
             </div>
           </Col>
         </Row>
         <Row>
           <Col xs="4">
             <div className="queststatus-container">
-              <img src={ Lockquest }/>
+              <img src={Lockquest} />
             </div>
           </Col>
           <Col xs="4">
             <div className="queststatus-container">
-              <img src={ Lockquest }/>
+              <img src={Lockquest} />
             </div>
           </Col>
           <Col xs="4">
             <div className="queststatus-container">
-              <img src={ Lockquest }/>
+              <img src={Lockquest} />
             </div>
           </Col>
         </Row>

@@ -1,6 +1,6 @@
-import React , { Component } from 'react';
-import './newsstyle.css'
-import Newspic from './bg_night.jpg'
+import React, { Component } from 'react';
+import './newsstyle.css';
+import Newspic from './bg_night.jpg';
 
 class Newsblock extends Component {
   render() {
@@ -10,7 +10,7 @@ class Newsblock extends Component {
           <h1>News</h1>
         </div>
         <div className="newspic-container">
-          <img src={Newspic}/>
+          <img src={Newspic} />
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import { Button, Container, Row, Col } from 'reactstrap';
-import './nameliststyle.css'
+import './nameliststyle.css';
 import Imagebox from '../ImageBox/imagebox';
 
 class Namelist extends Component {
@@ -8,7 +8,9 @@ class Namelist extends Component {
     return (
       <div>
         <div className="qrbutton-container">
-              <Button color="danger" size="lg">Go to QR code</Button>
+          <Button color="danger" size="lg">
+            Go to QR code
+          </Button>
         </div>
         <div className="namelist-container">
           <div className="namelist-header">

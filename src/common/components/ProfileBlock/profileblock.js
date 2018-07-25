@@ -4,16 +4,16 @@ import Profilepics from './profile_icon_withstroke.png';
 import { Button, Container, Row, Col } from 'reactstrap';
 
 class Profileblock extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       score: 10,
-      nickname: "Pok",
-      firstname: "ศุภกิตติ์",
-      lastname: "เธียรธัญญกิจ",
-      branch: "เทคโนโลยีสารสนเทศ(ภาคปกติ)",
-      };
-    }
+      nickname: 'Pok',
+      firstname: 'ศุภกิตติ์',
+      lastname: 'เธียรธัญญกิจ',
+      branch: 'เทคโนโลยีสารสนเทศ(ภาคปกติ)'
+    };
+  }
 
   render() {
     return (
@@ -24,11 +24,13 @@ class Profileblock extends Component {
         <Container>
           <Row>
             <Col lg="2" md="4" className="profilepicture-container">
-              <img src={Profilepics}/>
+              <img src={Profilepics} />
             </Col>
             <Col lg="10" md="8" className="profileheader-container">
               <h1 id="nickname-block">{this.state.nickname}</h1>
-              <h1 id="fullname-block">{this.state.firstname} {this.state.lastname}</h1>
+              <h1 id="fullname-block">
+                {this.state.firstname} {this.state.lastname}
+              </h1>
             </Col>
           </Row>
           <Row>
@@ -39,10 +41,14 @@ class Profileblock extends Component {
           </Row>
           <Row>
             <Col lg="6" md="12" className="profilebutton-container">
-              <Button color="danger" size="lg">ล่าได้แล้ว { this.state.score } คน</Button>{' '}
+              <Button color="danger" size="lg">
+                ล่าได้แล้ว {this.state.score} คน
+              </Button>{' '}
             </Col>
             <Col lg="6" md="12" className="profilebutton-container">
-              <Button color="secondary" size="lg">แก้ไขโปรไฟล์</Button>
+              <Button color="secondary" size="lg">
+                แก้ไขโปรไฟล์
+              </Button>
             </Col>
           </Row>
         </Container>

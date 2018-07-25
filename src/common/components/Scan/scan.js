@@ -3,7 +3,6 @@ import './scanstyle.css';
 import { Container, Row, Col, Button } from 'reactstrap';
 
 class Scan extends Component {
-
   render() {
     return (
       <div>
@@ -20,7 +19,9 @@ class Scan extends Component {
           </Container>
         </div>
         <div className="entercode-container">
-          <Button color="warning" size="lg">Enter code</Button>
+          <Button color="warning" size="lg">
+            Enter code
+          </Button>
         </div>
       </div>
     );

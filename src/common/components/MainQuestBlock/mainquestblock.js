@@ -3,14 +3,14 @@ import './mqblockstyle.css';
 import { Container, Row, Col } from 'reactstrap';
 
 class Mainquestblock extends Component {
-    constructor(){
+  constructor() {
     super();
     this.state = {
-      quest1: "หาแมว",
-      quest2: "หาหมา",
-      quest3: "หาหนู"
-      };
-    }
+      quest1: 'หาแมว',
+      quest2: 'หาหมา',
+      quest3: 'หาหนู'
+    };
+  }
 
   render() {
     return (
