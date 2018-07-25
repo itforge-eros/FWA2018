@@ -4,9 +4,9 @@ import EditProfile from './components/EditProfile/editprofile.js';
 
 class Home extends Component {
   // Change title
-  // componentDidMount() {
-  //   document.title = 'Amazing Page';
-  // }
+  componentDidMount() {
+    document.title = 'Freshy IT 2018 | Edit Profile';
+  }
 
   render() {
     return <EditProfile />;

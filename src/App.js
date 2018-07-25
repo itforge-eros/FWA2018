@@ -10,8 +10,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-// routes
-import routes from './asyncRoutes';
+// Route
+import Routes from './Routes';
 
 // work components
 // import Newsblock from './components/NewsBlock/newsblock';
@@ -31,7 +31,9 @@ const App = () => (
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
         <div className="App">
-          <Container>{routes}</Container>
+          <Container>
+            <Routes />
+          </Container>
           {/* <Container>
               <Row>
                 <Col className="mainsort-container">
