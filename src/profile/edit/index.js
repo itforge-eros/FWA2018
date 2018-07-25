@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Container } from 'reactstrap';
 import EditProfile from './components/EditProfile/editprofile.js';
 
-class Home extends Component {
+class ProfileEdit extends Component {
   // Change title
   componentDidMount() {
     document.title = 'Freshy IT 2018 | Edit Profile';
@@ -13,4 +13,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default ProfileEdit;

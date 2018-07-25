@@ -1,8 +1,10 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import './navbar.css'
 
-class Mainnav extends Component {
+// Custom Style
+import './Navbar.css';
+
+class NavBar extends Component {
   constructor(props) {
     super(props);
 
@@ -19,30 +21,30 @@ class Mainnav extends Component {
   }
   render() {
     return (
-      <div className="Mainnav">
-        <Navbar color="white" light>
-          <NavbarBrand href="/" className="mr-auto">IT Freshy 2018</NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink href="/">Dashboard</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/">Profile</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/">QR code</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/">Quest</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
+      <Navbar dark fixed="top" className="MainNavBar">
+        <NavbarBrand href="/" className="mr-auto">
+          Freshy IT 2018
+        </NavbarBrand>
+        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+        <Collapse isOpen={!this.state.collapsed} navbar>
+          <Nav navbar>
+            <NavItem>
+              <NavLink href="/">Dashboard</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/">Profile</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/">QR code</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/">Quest</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
     );
   }
 }
 
-export default Mainnav;
+export default NavBar;

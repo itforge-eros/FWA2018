@@ -13,6 +13,9 @@ import './App.css';
 // Route
 import Routes from './Routes';
 
+// NavBar
+import NavBar from './components/Navbar/Navbar';
+
 // work components
 // import Newsblock from './components/NewsBlock/newsblock';
 // import Profileblock from './components/ProfileBlock/profileblock';
@@ -31,6 +34,7 @@ const App = () => (
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
         <div className="App">
+          <NavBar />
           <Container>
             <Routes />
           </Container>
