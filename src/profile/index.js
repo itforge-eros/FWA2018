@@ -11,27 +11,13 @@ const EditProfile = Loadable({
   loading: AppLoader
 });
 
-const Profile = (props) => {
-  const {
-    match: {
-      params: { page }
-    }
-  } = props;
-
+const Profile = () => {
   return (
     <Fragment>
       <Route path="/profile/me" component={EditProfile} />
       <Route path="/profile/edit" component={EditProfile} />
     </Fragment>
   );
-};
-
-Profile.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      page: PropTypes.string
-    })
-  })
 };
 
 export default Profile;
