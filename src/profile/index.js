@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router';
-import PropTypes from 'prop-types';
 
 import Loadable from 'react-loadable';
 import AppLoader from '../common/components/AppLoader';
