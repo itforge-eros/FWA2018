@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropType from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router';
 import Loadable from 'react-loadable';
@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 
 // Import modules/routes
 import PageNotFound from './common/components/PageNotFound';
+
+import NavBar from './common/components/Navbar/Navbar';
 
 // Code splitting with dynamic import
 // https://reactjs.org/docs/code-splitting.html
@@ -28,17 +30,26 @@ const enhance = compose(
   )
 );
 
-const Router = (props) => (
-  <Switch>
-    <Route exact path="/">
-      {props.user.login ? <Redirect to="/profile/me" /> : <Home />}
-    </Route>
-    <Route path="/profile/:page" component={Profile} />
-    <Route path="*" component={PageNotFound} />
-  </Switch>
-);
+const Router = (props) => {
+  const {
+    user: { login }
+  } = props;
 
-Router.propType = {
+  return (
+    <Fragment>
+      {login ? <NavBar /> : ''}
+      <Switch>
+        <Route exact path="/">
+          {login ? <Redirect to="/profile/me" /> : <Home />}
+        </Route>
+        <Route path="/profile/:page">{login ? <Profile /> : <Redirect to="/" />}</Route>
+        <Route path="*" component={PageNotFound} />
+      </Switch>
+    </Fragment>
+  );
+};
+
+Router.propTypes = {
   user: PropType.shape({
     login: PropType.bool
   })

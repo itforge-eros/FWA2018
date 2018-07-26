@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { lifecycle, compose } from 'recompose';
 
 import LoginBlock from './components/LoginBlock/LoginBlock';
 import './style.css';
 
 const enhance = compose(
+  withRouter,
   connect(
     (state) => state,
     {}

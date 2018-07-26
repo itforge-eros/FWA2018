@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import store, { history, persistor } from './store';
 import { Container } from 'reactstrap';
 
@@ -12,9 +12,6 @@ import './App.css';
 
 // Route
 import Routes from './Routes';
-
-// NavBar
-import NavBar from './common/components/Navbar/Navbar';
 
 // work components
 // import Newsblock from './components/NewsBlock/newsblock';
@@ -34,7 +31,6 @@ const App = () => (
     <PersistGate loading={null} persistor={persistor}>
       <ConnectedRouter history={history}>
         <div className="App">
-          <NavBar />
           <Container>
             <Routes />
           </Container>

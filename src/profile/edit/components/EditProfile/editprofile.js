@@ -1,13 +1,19 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { compose } from 'recompose';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './editpfstyle.css';
 
-const enhance = compose(withRouter);
+const enhance = compose(
+  connect(
+    (state) => state,
+    {}
+  )
+);
 
-const EditProfile = () => (
+const EditProfile = (props) => (
   <div className="editprofile-container">
     <div className="editprofile-header">
       <h3>Edit Profile</h3>
@@ -30,7 +36,10 @@ const EditProfile = () => (
         <Input type="textarea" name="text" />
       </FormGroup>
       <div className="Submitpf-btn">
-        <Button>ยืนยัน</Button>
+        <Link to="/profile/me">
+          <Button color="danger">ยกเลิก</Button>
+        </Link>{' '}
+        <Button color="success">บันทึก</Button>
       </div>
     </Form>
   </div>

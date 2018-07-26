@@ -7,13 +7,14 @@
     padding: 0.5rem 1rem;
     padding-right: 0;
     padding-left: 0;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7) !important;
     background-color: transparent;
 }
 
 .MainNavBarLink:hover {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1) !important;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .MainNavBarBrand {

@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 // Persist
 import { persistStore, persistReducer } from 'redux-persist';
@@ -14,6 +14,8 @@ const persistConfig = {
   storage
 };
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 // export `history` to use in index.js, we using `createBrowserHistory`
 export const history = createHistory();
 
@@ -21,10 +23,10 @@ export const history = createHistory();
 const appRouterMiddleware = routerMiddleware(history);
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = createStore(
-  persistedReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(appRouterMiddleware)
+  connectRouter(history)(persistedReducer),
+  composeEnhancers(applyMiddleware(appRouterMiddleware))
 );
 
 export let persistor = persistStore(store);

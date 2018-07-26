@@ -1,20 +1,23 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import PropType from 'prop-types';
+
 import { setCollapse } from './redux';
+import { setLogout } from '../../../home/redux';
 
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+
+import { auth } from '../../../firebase';
 
 // Custom Style
 import './Navbar.css';
 
 const enhance = compose(
-  withRouter,
   connect(
     (state) => state,
-    { setCollapse }
+    { setCollapse, setLogout }
   )
 );
 
@@ -24,6 +27,14 @@ const NavBar = (props) => {
   } = props;
 
   const { setCollapse } = props;
+  const { setLogout } = props;
+
+  const logout = () => {
+    auth.signOut().then(() => {
+      setLogout();
+      setCollapse();
+    });
+  };
 
   return (
     <Navbar dark fixed="top" className="MainNavBar">
@@ -34,24 +45,29 @@ const NavBar = (props) => {
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/dashboard" className="MainNavBarLink">
+            <Link to="/dashboard" className="MainNavBarLink">
               Dashboard
             </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/profile/me" className="MainNavBarLink">
+            <Link to="/profile/me" className="MainNavBarLink">
               Profile
             </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/qr" className="MainNavBarLink">
+            <Link to="/qr" className="MainNavBarLink">
               QR Code
             </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/quest" className="MainNavBarLink">
+            <Link to="/quest" className="MainNavBarLink">
               Quest
             </Link>
+          </NavItem>
+          <NavItem>
+            <a onClick={() => logout()} className="MainNavBarLink">
+              Logout
+            </a>
           </NavItem>
         </Nav>
       </Collapse>
@@ -61,7 +77,8 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   navbar: PropType.shape({ collapsed: PropType.bool }),
-  setCollapse: PropType.func
+  setCollapse: PropType.func,
+  setLogout: PropType.func
 };
 
 export default enhance(NavBar);
