@@ -14,7 +14,7 @@ import './App.css';
 import Routes from './Routes';
 
 // NavBar
-import NavBar from './components/Navbar/Navbar';
+import NavBar from './common/components/Navbar/Navbar';
 
 // work components
 // import Newsblock from './components/NewsBlock/newsblock';

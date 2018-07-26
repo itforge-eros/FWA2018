@@ -3,14 +3,14 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import './editpfstyle.css';
+import './Profile.css';
 
 const enhance = compose(withRouter);
 
-const EditProfile = () => (
+const MyProfile = () => (
   <div className="editprofile-container">
     <div className="editprofile-header">
-      <h3>Edit Profile</h3>
+      <h3>My Profile</h3>
     </div>
     <Form>
       <FormGroup className="ChangeNickname">
@@ -36,4 +36,4 @@ const EditProfile = () => (
   </div>
 );
 
-export default enhance(EditProfile);
+export default enhance(MyProfile);

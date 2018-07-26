@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import PropType from 'prop-types';
-import { setCollapse } from '../../redux';
+import { setCollapse } from './redux';
 
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 
@@ -34,22 +34,22 @@ const NavBar = (props) => {
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link to="/dashboard" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/dashboard" className="MainNavBarLink">
               Dashboard
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/profile/me" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/profile/me" className="MainNavBarLink">
               Profile
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/qr" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/qr" className="MainNavBarLink">
               QR Code
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/quest" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/quest" className="MainNavBarLink">
               Quest
             </Link>
           </NavItem>

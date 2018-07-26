@@ -1,9 +1,10 @@
 import React from 'react';
+import { compose } from 'recompose';
+import { withRouter } from 'react-router-dom';
 
-class PageNotFound extends React.Component {
-  render() {
-    return <h2 className="text-center">Page not found!</h2>;
-  }
-}
+const enhance = compose(withRouter);
+const PageNotFound = () => {
+  return <h2 className="text-center">Page not found!</h2>;
+};
 
-export default PageNotFound;
+export default enhance(PageNotFound);
