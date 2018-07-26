@@ -17,12 +17,12 @@ const MyProfile = () => (
           <img alt="Profile" src={DefaultPhoto} />
         </Col>
         <Col lg="10" md="8" className="profileheader-container">
-          <h1 id="nickname-main" />
-          <h1 id="fullname-main" />
-          <h6>รหัสนักศึกษา : </h6>
-          <h6>สาขา : </h6>
+          <h1 id="nickname-main">ตู่</h1>
+          <h1 id="fullname-main">ประยุทธ์ จันโอชา</h1>
+          <h6>รหัสนักศึกษา : 60070044</h6>
+          <h6>สาขา : IT</h6>
           <h6>แนะนำตัวสั้นๆกันหน่อย! :</h6>
-          <h6 id="intro" />
+          <h6 id="intro">สวัสดีเราเลือกตั้งปีหน้านะ~</h6>
         </Col>
       </Row>
       <Row>
@@ -38,11 +38,11 @@ const MyProfile = () => (
           <Row>
             <Col className="quest-status1">
               <h4>หลัก</h4>
-              <h2 id="number-pass" />
+              <h2 id="number-pass">112</h2>
             </Col>
             <Col className="quest-status2">
               <h4>พิเศษ</h4>
-              <h2 id="number-pass" />
+              <h2 id="number-pass">112</h2>
             </Col>
           </Row>
         </Col>

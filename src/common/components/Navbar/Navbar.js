@@ -45,23 +45,23 @@ const NavBar = (props) => {
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link to="/dashboard" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/dashboard" className="MainNavBarLink">
               Dashboard
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/profile/me" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/profile/me" className="MainNavBarLink">
               Profile
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/qr" className="MainNavBarLink">
+            <Link onClick={() => setCollapse()} to="/code" className="MainNavBarLink">
               QR Code
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/quest" className="MainNavBarLink">
-              Quest
+            <Link onClick={() => setCollapse()} to="/quests" className="MainNavBarLink">
+              Quests
             </Link>
           </NavItem>
           <NavItem>
