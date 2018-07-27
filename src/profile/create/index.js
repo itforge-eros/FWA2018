@@ -1,18 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { compose, lifecycle } from 'recompose';
-import { withRouter } from 'react-router-dom';
-import EditProfile from './components/CreateProfile';
+import { withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import ProfileCreate from './components/CreateProfile';
 
 const enhance = compose(
   withRouter,
+  connect(
+    (state) => state,
+    {}
+  ),
   lifecycle({
     componentDidMount() {
       document.title = 'Freshy IT 2018 | Edit Profile';
     }
   })
 );
-const ProfileEdit = () => {
-  return <EditProfile />;
+
+const CreateProfile = (props) => {
+  const {
+    profile: { create }
+  } = props;
+  return create ? <Redirect to="/profile/me" /> : <ProfileCreate />;
 };
 
-export default enhance(ProfileEdit);
+CreateProfile.propTypes = {
+  profile: PropTypes.shape({
+    create: PropTypes.bool
+  })
+};
+
+export default enhance(CreateProfile);
