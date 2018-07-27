@@ -25,7 +25,7 @@ const CreateProfile = (props) => {
   const {
     profile: { create }
   } = props;
-  return create ? <Redirect to="/profile/me" /> : <ProfileCreate />;
+  return create ? <Redirect to="/pending" /> : <ProfileCreate />;
 };
 
 CreateProfile.propTypes = {
