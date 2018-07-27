@@ -19,7 +19,7 @@ const enhance = compose(
 
 const PendingProfile = (props) => {
   const {
-    profile: { approve, loading }
+    profile: { approve, loading, create }
   } = props;
 
   const Pending = approve ? (
@@ -33,11 +33,13 @@ const PendingProfile = (props) => {
     </div>
   );
 
-  return loading ? <Loader isLoading /> : Pending;
+  const Create = create ? Pending : <Redirect to="/profile/create" />;
+
+  return loading ? <Loader isLoading /> : Create;
 };
 
 PendingProfile.propTypes = {
-  profile: PropTypes.shape({ approve: PropTypes.bool, loading: PropTypes.bool })
+  profile: PropTypes.shape({ approve: PropTypes.bool, loading: PropTypes.bool, create: PropTypes.bool })
 };
 
 export default enhance(PendingProfile);
