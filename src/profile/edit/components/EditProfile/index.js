@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { setForm, setFormDefault } from '../../../redux';
+import { setForm, setFormDefault, editProfile } from '../../../redux';
 
 import './EditProfile.css';
 
 const enhance = compose(
   connect(
     (state) => state,
-    { setForm, setFormDefault }
+    { setForm, setFormDefault, editProfile }
   ),
   lifecycle({
     componentWillMount() {
@@ -26,6 +26,7 @@ const enhance = compose(
 const EditProfile = (props) => {
   const {
     setForm,
+    editProfile,
     profile: {
       form: { nickname, prefix, firstname, lastname, student_id, branch, address, introduction, year }
     }
@@ -97,7 +98,7 @@ const EditProfile = (props) => {
               <FontAwesomeIcon icon="times" /> ยกเลิก
             </Button>
           </Link>{' '}
-          <Button color="success">
+          <Button color="success" onClick={() => editProfile()}>
             <FontAwesomeIcon icon="save" /> บันทึก
           </Button>
         </div>
@@ -109,6 +110,7 @@ const EditProfile = (props) => {
 EditProfile.propTypes = {
   setForm: PropTypes.func,
   setFormDefault: PropTypes.func,
+  editProfile: PropTypes.func,
   profile: PropTypes.shape({
     form: PropTypes.shape({
       nickname: PropTypes.string,

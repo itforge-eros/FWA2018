@@ -23,6 +23,11 @@ const Profile = Loadable({
   loading: AppLoader
 });
 
+const Pending = Loadable({
+  loader: () => import('./pending'),
+  loading: AppLoader
+});
+
 const enhance = compose(
   connect(
     (state) => state,
@@ -40,8 +45,9 @@ const Router = (props) => {
       {login ? <NavBar /> : ''}
       <Switch>
         <Route exact path="/">
-          {login ? <Redirect to="/profile/me" /> : <Home />}
+          {login ? <Redirect to="/pending" /> : <Home />}
         </Route>
+        <Route path="/pending">{login ? <Pending /> : <Redirect to="/" />}</Route>
         <Route path="/profile/:page">{login ? <Profile /> : <Redirect to="/" />}</Route>
         <Route path="*">{login ? <PageNotFound /> : <Redirect to="/" />}</Route>
       </Switch>

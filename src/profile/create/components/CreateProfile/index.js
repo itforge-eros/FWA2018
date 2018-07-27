@@ -9,20 +9,21 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // redux actions
-import { setForm } from '../../../redux';
+import { setForm, createProfile } from '../../../redux';
 
 import './CreateProfile.css';
 
 const enhance = compose(
   connect(
     (state) => state,
-    { setForm }
+    { setForm, createProfile }
   )
 );
 
 const CreateProfile = (props) => {
   const {
     setForm,
+    createProfile,
     profile: {
       form: { nickname, prefix, firstname, lastname, student_id, branch, address, introduction, year }
     }
@@ -36,7 +37,7 @@ const CreateProfile = (props) => {
       <Form>
         <FormGroup className="CreateProfileForm">
           <Label>ชื่อเล่น</Label>
-          <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />
+          <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>คำนำหน้า</Label>
@@ -48,15 +49,15 @@ const CreateProfile = (props) => {
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>ชื่อจริง</Label>
-          <Input onChange={(e) => setForm('firstname', e.target.value)} value={firstname} />
+          <Input onChange={(e) => setForm('firstname', e.target.value)} value={firstname} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>นามสกุล</Label>
-          <Input onChange={(e) => setForm('lastname', e.target.value)} value={lastname} />
+          <Input onChange={(e) => setForm('lastname', e.target.value)} value={lastname} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>เลขประจำตัวนักศึกษา</Label>
-          <Input onChange={(e) => setForm('student_id', e.target.value)} value={student_id} />
+          <Input onChange={(e) => setForm('student_id', e.target.value)} value={student_id} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>สาขา</Label>
@@ -77,7 +78,7 @@ const CreateProfile = (props) => {
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>ที่อยู่ (เช่น บ้าน, เกกี, วีคอนโด)</Label>
-          <Input onChange={(e) => setForm('address', e.target.value)} value={address} />
+          <Input onChange={(e) => setForm('address', e.target.value)} value={address} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label for="address">แนะนำตัวสั้นๆกันหน่อย!</Label>
@@ -86,10 +87,11 @@ const CreateProfile = (props) => {
             name="address"
             onChange={(e) => setForm('introduction', e.target.value)}
             value={introduction}
+            required
           />
         </FormGroup>
         <div className="Submitpf-btn">
-          <Button color="success">
+          <Button color="success" onClick={() => createProfile()}>
             <FontAwesomeIcon icon="save" /> บันทึก
           </Button>
         </div>
@@ -100,6 +102,7 @@ const CreateProfile = (props) => {
 
 CreateProfile.propTypes = {
   setForm: PropTypes.func,
+  createProfile: PropTypes.func,
   profile: PropTypes.shape({
     form: PropTypes.shape({
       nickname: PropTypes.string,

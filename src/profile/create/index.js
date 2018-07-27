@@ -5,15 +5,18 @@ import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProfileCreate from './components/CreateProfile';
 
+import { resetForm } from '../redux';
+
 const enhance = compose(
   withRouter,
   connect(
     (state) => state,
-    {}
+    { resetForm }
   ),
   lifecycle({
     componentDidMount() {
-      document.title = 'Freshy IT 2018 | Edit Profile';
+      document.title = 'Freshy IT 2018 | Create Profile';
+      this.props.resetForm();
     }
   })
 );

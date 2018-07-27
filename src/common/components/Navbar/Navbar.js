@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
@@ -25,6 +25,7 @@ const enhance = compose(
 const NavBar = (props) => {
   const {
     navbar: { collapsed },
+    profile: { approve },
     setCollapse,
     setLogout,
     resetProfile
@@ -46,21 +47,27 @@ const NavBar = (props) => {
       <NavbarToggler onClick={() => setCollapse()} className="mr-2" />
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
-          <NavItem>
-            <Link to="/profile/me" className="MainNavBarLink">
-              Profile
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/friends" className="MainNavBarLink">
-              Friends
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/quests" className="MainNavBarLink">
-              Quests
-            </Link>
-          </NavItem>
+          {approve ? (
+            <Fragment>
+              <NavItem>
+                <Link to="/profile/me" className="MainNavBarLink">
+                  Profile
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/friends" className="MainNavBarLink">
+                  Friends
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/quests" className="MainNavBarLink">
+                  Quests
+                </Link>
+              </NavItem>
+            </Fragment>
+          ) : (
+            ''
+          )}
           <NavItem>
             <a onClick={() => logout()} className="MainNavBarLink">
               Logout
@@ -74,6 +81,7 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   navbar: PropType.shape({ collapsed: PropType.bool }),
+  profile: PropType.shape({ approve: PropType.bool }),
   setCollapse: PropType.func,
   setLogout: PropType.func,
   resetProfile: PropType.func

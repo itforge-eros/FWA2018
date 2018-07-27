@@ -4,7 +4,7 @@ import LoginButton from '../LoginButton/LoginButtion';
 
 import './LoginBlock.css';
 
-const Newsblock = () => (
+const LoginBlock = () => (
   <div className="login-container">
     <div className="login-header">
       <h1>Welcome back!</h1>
@@ -15,4 +15,4 @@ const Newsblock = () => (
   </div>
 );
 
-export default Newsblock;
+export default LoginBlock;

@@ -11,7 +11,8 @@ const AppLoader = ({ isLoading, error }) => {
       </div>
     );
   } else if (error) {
-    content = <div className="AppLoader">Sorry, there was a problem loading the page.</div>;
+    console.log(error);
+    content = 'Sorry, there was a problem loading the page.';
   }
 
   return <div className="AppLoader">{content}</div>;
@@ -19,7 +20,7 @@ const AppLoader = ({ isLoading, error }) => {
 
 AppLoader.propTypes = {
   isLoading: PropTypes.bool,
-  error: PropTypes.bool
+  error: PropTypes.object
 };
 
 export default AppLoader;

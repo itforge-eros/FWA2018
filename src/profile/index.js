@@ -46,6 +46,7 @@ const Profile = (props) => {
   ) : (
     <Fragment>
       {!create && pathname !== '/profile/create' ? <Redirect to="/profile/create" /> : ''}
+
       <Route path="/profile/me" component={MyProfile} />
       <Route path="/profile/edit" component={EditProfile} />
       <Route path="/profile/create" component={CreateProfile} />

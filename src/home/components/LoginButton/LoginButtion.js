@@ -32,9 +32,7 @@ const enhance = compose(
 
 const LoginButton = (props) => {
   const login = () => {
-    auth.signInWithPopup(provider).then((result) => {
-      props.setLogin(result.user);
-    });
+    auth.signInWithPopup(provider).then(() => {});
   };
 
   const logout = () => {
