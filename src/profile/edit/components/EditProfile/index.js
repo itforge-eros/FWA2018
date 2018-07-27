@@ -118,7 +118,8 @@ EditProfile.propTypes = {
       student_id: PropTypes.string,
       branch: PropTypes.string,
       address: PropTypes.string,
-      introduction: PropTypes.string
+      introduction: PropTypes.string,
+      year: PropTypes.string
     })
   })
 };

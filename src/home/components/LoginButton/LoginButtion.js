@@ -4,6 +4,7 @@ import { lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
 
 import { setLogin, setLogout } from '../../redux';
+import { setProfile } from '../../../profile/redux';
 
 import Button from 'reactstrap/lib/Button';
 
@@ -15,13 +16,14 @@ import { auth, provider } from '../../../firebase';
 const enhance = compose(
   connect(
     (state) => state,
-    { setLogin, setLogout }
+    { setLogin, setLogout, setProfile }
   ),
   lifecycle({
     componentDidMount() {
       auth.onAuthStateChanged((user) => {
         if (user) {
           this.props.setLogin(user);
+          this.props.setProfile();
         }
       });
     }

@@ -36,12 +36,14 @@ const CreateProfile = Loadable({
 
 const Profile = (props) => {
   const {
-    profile: { create },
+    profile: { create, loading },
     router: {
       location: { pathname }
     }
   } = props;
-  return (
+  return loading ? (
+    <AppLoader isLoading={true} />
+  ) : (
     <Fragment>
       {!create && pathname !== '/profile/create' ? <Redirect to="/profile/create" /> : ''}
       <Route path="/profile/me" component={MyProfile} />
@@ -53,7 +55,8 @@ const Profile = (props) => {
 
 Profile.propTypes = {
   profile: PropTypes.shape({
-    create: PropTypes.bool
+    create: PropTypes.bool,
+    loading: PropTypes.bool
   }),
   router: PropTypes.shape({
     location: PropTypes.shape({

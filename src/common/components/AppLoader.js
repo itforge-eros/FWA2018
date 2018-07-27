@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AppLoader = ({ isLoading, error }) => {
   let content = '';
@@ -14,6 +15,11 @@ const AppLoader = ({ isLoading, error }) => {
   }
 
   return <div className="AppLoader">{content}</div>;
+};
+
+AppLoader.propTypes = {
+  isLoading: PropTypes.bool,
+  error: PropTypes.bool
 };
 
 export default AppLoader;

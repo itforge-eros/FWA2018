@@ -6,6 +6,7 @@ import PropType from 'prop-types';
 
 import { setCollapse } from './redux';
 import { setLogout } from '../../../home/redux';
+import { resetProfile } from '../../../profile/redux';
 
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 
@@ -17,22 +18,23 @@ import './Navbar.css';
 const enhance = compose(
   connect(
     (state) => state,
-    { setCollapse, setLogout }
+    { setCollapse, setLogout, resetProfile }
   )
 );
 
 const NavBar = (props) => {
   const {
-    navbar: { collapsed }
+    navbar: { collapsed },
+    setCollapse,
+    setLogout,
+    resetProfile
   } = props;
-
-  const { setCollapse } = props;
-  const { setLogout } = props;
 
   const logout = () => {
     auth.signOut().then(() => {
       setLogout();
       setCollapse();
+      resetProfile();
     });
   };
 
@@ -73,7 +75,8 @@ const NavBar = (props) => {
 NavBar.propTypes = {
   navbar: PropType.shape({ collapsed: PropType.bool }),
   setCollapse: PropType.func,
-  setLogout: PropType.func
+  setLogout: PropType.func,
+  resetProfile: PropType.func
 };
 
 export default enhance(NavBar);
