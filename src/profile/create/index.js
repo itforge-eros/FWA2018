@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose, lifecycle } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import EditProfile from './components/EditProfile';
+import EditProfile from './components/CreateProfile';
 
 const enhance = compose(
   withRouter,

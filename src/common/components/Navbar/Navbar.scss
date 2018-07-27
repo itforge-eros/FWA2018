@@ -38,3 +38,9 @@
     text-decoration: none;
     font-family: 'Itim', cursive;
 }
+
+@media (min-width: 768px) {
+    .MainNavBarLink {
+        margin-left: 1rem;
+    }
+}

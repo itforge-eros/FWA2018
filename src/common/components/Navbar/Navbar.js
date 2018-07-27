@@ -37,7 +37,7 @@ const NavBar = (props) => {
   };
 
   return (
-    <Navbar dark fixed="top" className="MainNavBar">
+    <Navbar dark fixed="top" className="MainNavBar" expand="md">
       <Link to="/" className="mr-auto MainNavBarBrand">
         Freshy IT 2018
       </Link>
@@ -45,22 +45,17 @@ const NavBar = (props) => {
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/dashboard" className="MainNavBarLink">
-              Dashboard
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link onClick={() => setCollapse()} to="/profile/me" className="MainNavBarLink">
+            <Link to="/profile/me" className="MainNavBarLink">
               Profile
             </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/code" className="MainNavBarLink">
-              QR Code
+            <Link to="/friends" className="MainNavBarLink">
+              Friends
             </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={() => setCollapse()} to="/quests" className="MainNavBarLink">
+            <Link to="/quests" className="MainNavBarLink">
               Quests
             </Link>
           </NavItem>

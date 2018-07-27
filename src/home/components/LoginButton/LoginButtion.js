@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { setLogin, setLogout } from '../../redux';
 
 import Button from 'reactstrap/lib/Button';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 

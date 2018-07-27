@@ -43,7 +43,7 @@ const Router = (props) => {
           {login ? <Redirect to="/profile/me" /> : <Home />}
         </Route>
         <Route path="/profile/:page">{login ? <Profile /> : <Redirect to="/" />}</Route>
-        <Route path="*" component={PageNotFound} />
+        <Route path="*">{login ? <PageNotFound /> : <Redirect to="/" />}</Route>
       </Switch>
     </Fragment>
   );

@@ -2,6 +2,8 @@ import React from 'react';
 import { Row, Col, Container, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import './Profile.css';
 
 import DefaultPhoto from './default.png';
@@ -51,7 +53,7 @@ const MyProfile = () => (
         <Col className="btn-container">
           <Link to="/profile/edit">
             <Button color="secondary" size="lg">
-              แก้ไขโปรไฟล์
+              <FontAwesomeIcon icon="edit" /> แก้ไขโปรไฟล์
             </Button>
           </Link>
         </Col>

@@ -10,6 +10,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
+// FontAwesome
+import './FontAwesome';
+
 // Route
 import Routes from './Routes';
 
