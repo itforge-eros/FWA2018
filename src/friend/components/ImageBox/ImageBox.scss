@@ -1,14 +1,15 @@
 .huntedpic-container img {
   width: 100%;
-  border-radius: 15px; }
+  border-radius: 15px 15px 0 0;
+}
 
 .huntedid-container {
   background-color: #00578a;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   text-align: center;
   padding-top: 2px;
   color: #e2e2e2;
   box-shadow: 0px 4px #242424;
-  font-size: 12px;
+  font-size: 1em;
   font-family: 'Itim', cursive;
- }
+}

@@ -19,23 +19,27 @@ const enhance = compose(
   ),
   lifecycle({
     componentDidMount() {
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          this.props.setProfile(user.displayName);
-        }
-      });
+      document.title = 'Freshy 2018 | Pending Profile';
+      if (!this.props.profile.approve) {
+        auth.onAuthStateChanged((user) => {
+          if (user) {
+            this.props.setProfile(user);
+          }
+        });
+      }
     }
   })
 );
 
 const PendingProfile = (props) => {
   const {
-    profile: { approve, loading, create, displayName },
+    user: { user },
+    profile: { approve, loading, create },
     setProfile
   } = props;
 
   const checkPending = () => {
-    setProfile(displayName);
+    setProfile(user);
   };
 
   const Pending = approve ? (
@@ -60,6 +64,9 @@ const PendingProfile = (props) => {
 };
 
 PendingProfile.propTypes = {
+  user: PropTypes.shape({
+    user: PropTypes.object
+  }),
   profile: PropTypes.shape({
     approve: PropTypes.bool,
     loading: PropTypes.bool,

@@ -22,6 +22,7 @@ const initialState = {
   approve: false,
   loading: false,
   displayName: '',
+  photoURL: '',
   info: {
     nickname: '',
     prefix: '',
@@ -112,20 +113,23 @@ export const resetProfile = () => ({
   type: RESET_PROFILE
 });
 
-export const setProfile = (displayName) => ({
-  type: SET_PROFILE,
-  payload: firestore
-    .collection('profile')
-    .doc(auth.currentUser.uid)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        return { ...doc.data(), displayName };
-      } else {
-        return { ...initialState, displayName };
-      }
-    })
-});
+export const setProfile = (user) => {
+  const { displayName, photoURL } = user;
+  return {
+    type: SET_PROFILE,
+    payload: firestore
+      .collection('profile')
+      .doc(auth.currentUser.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          return { ...doc.data(), displayName, photoURL };
+        } else {
+          return { ...initialState, displayName, photoURL };
+        }
+      })
+  };
+};
 
 export const createProfile = () => ({
   type: CREATE_PROFILE,
@@ -137,6 +141,7 @@ export const createProfile = () => ({
       admin: false,
       approve: false,
       displayName: store.getState().profile.displayName,
+      photoURL: store.getState().profile.photoURL,
       info: store.getState().profile.form
     })
     .then(() => {

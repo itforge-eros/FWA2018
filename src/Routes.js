@@ -23,6 +23,16 @@ const Profile = Loadable({
   loading: AppLoader
 });
 
+const Quest = Loadable({
+  loader: () => import('./quest'),
+  loading: AppLoader
+});
+
+const Friend = Loadable({
+  loader: () => import('./friend'),
+  loading: AppLoader
+});
+
 const Pending = Loadable({
   loader: () => import('./pending'),
   loading: AppLoader
@@ -49,6 +59,8 @@ const Router = (props) => {
         </Route>
         <Route path="/pending">{login ? <Pending /> : <Redirect to="/" />}</Route>
         <Route path="/profile/:page">{login ? <Profile /> : <Redirect to="/" />}</Route>
+        <Route path="/quests/:page">{login ? <Quest /> : <Redirect to="/" />}</Route>
+        <Route path="/friends/:page">{login ? <Friend /> : <Redirect to="/" />}</Route>
         <Route path="*">{login ? <PageNotFound /> : <Redirect to="/" />}</Route>
       </Switch>
     </Fragment>

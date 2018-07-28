@@ -55,12 +55,12 @@ const NavBar = (props) => {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/friends" className="MainNavBarLink">
+                <Link to="/friends/list" className="MainNavBarLink">
                   Friends
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/quests" className="MainNavBarLink">
+                <Link to="/quests/list" className="MainNavBarLink">
                   Quests
                 </Link>
               </NavItem>
