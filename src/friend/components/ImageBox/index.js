@@ -5,10 +5,10 @@ import './ImageBox.css';
 
 const ImageBox = (props) => {
   return (
-    <Col xs="4" md="3" lg="2">
+    <Col xs="6" md="4" lg="3">
       <a href="https://fb.com/wiput.pootong">
         <div className="ImageBox-container">
-          <img alt="profile" src="https://graph.facebook.com/2403983979619336/picture?width=150" />
+          <img alt="profile" src="https://graph.facebook.com/2403983979619336/picture?width=250" />
         </div>
         <div className="ImageBox-content">
           <p>
