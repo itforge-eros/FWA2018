@@ -1,8 +1,24 @@
 import React, { Fragment } from 'react';
-import { Button, Container, Row, Col } from 'reactstrap';
 
+import { Button, Container, Row, Col } from 'reactstrap';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+
+// Custom Style
 import './NameList.css';
+
+// Custom Components
 import ImageArea from '../ImageArea';
+import YearButton from '../YearButton';
+
+import { changeYear } from '../../redux';
+
+const enhance = compose(
+  connect(
+    (state) => state,
+    { changeYear }
+  )
+);
 
 const Namelist = () => {
   return (
@@ -13,18 +29,10 @@ const Namelist = () => {
         </div>
         <Container>
           <Row>
-            <Col xs="3" className="yearbutton-container">
-              <Button color="warning">ปี 1</Button>
-            </Col>
-            <Col xs="3" className="yearbutton-container">
-              <Button color="warning">ปี 2</Button>
-            </Col>
-            <Col xs="3" className="yearbutton-container">
-              <Button color="warning">ปี 3</Button>
-            </Col>
-            <Col xs="3" className="yearbutton-container">
-              <Button color="warning">ปี 4</Button>
-            </Col>
+            <YearButton year={1} />
+            <YearButton year={2} />
+            <YearButton year={3} />
+            <YearButton year={4} />
           </Row>
           <Row>
             <Col className="hunted-container">
@@ -42,4 +50,4 @@ const Namelist = () => {
   );
 };
 
-export default Namelist;
+export default enhance(Namelist);

@@ -9,8 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Profile.css';
 
-import DefaultPhoto from './default.png';
-
 const enhance = compose(
   connect(
     (state) => state,
@@ -21,7 +19,8 @@ const enhance = compose(
 const MyProfile = (props) => {
   const {
     profile: {
-      info: { nickname, prefix, firstname, lastname, student_id, branch, introduction }
+      info: { nickname, prefix, firstname, lastname, student_id, branch, introduction },
+      photoURL
     }
   } = props;
   return (
@@ -32,7 +31,7 @@ const MyProfile = (props) => {
       <Container>
         <Row>
           <Col lg="2" md="4" className="profilepicture-header">
-            <img alt="Profile" src={DefaultPhoto} />
+            <img alt="Profile" src={`${photoURL}?width=100`} />
           </Col>
           <Col lg="10" md="8" className="profileheader-container">
             <h1 id="nickname-main">{nickname}</h1>
@@ -93,7 +92,8 @@ MyProfile.propTypes = {
       student_id: PropTypes.string,
       branch: PropTypes.string,
       introduction: PropTypes.string
-    })
+    }),
+    photoURL: PropTypes.string
   })
 };
 

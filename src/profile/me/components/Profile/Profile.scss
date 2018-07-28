@@ -21,9 +21,10 @@
 
 .profilepicture-header img {
   margin-top: 1.7em;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   position: absolute;
+  border-radius: 10px;
 }
 
 .information {
@@ -72,7 +73,7 @@
 }
 
 .profileheader-container {
-  margin-left: 100px;
+  margin-left: 120px;
   padding-bottom: 3em;
 }
 

@@ -1,15 +1,35 @@
-.huntedpic-container img {
+.ImageBox-container {
+  background-color: #00578a;
+  border-radius: 15px 15px 0 0;
+  color: #e2e2e2;
+  position: relative;
+}
+
+.ImageBox-container:after {
+  content: "";
+  background-color: #00578a;
+  border-radius: 15px 15px 0 0;
+  display: block;
+  padding-bottom: 100%;
+}
+
+.ImageBox-container img {
   width: 100%;
+  height: auto;
+  position: absolute;
   border-radius: 15px 15px 0 0;
 }
 
-.huntedid-container {
+.ImageBox-content {
+  padding-top: 0.1em;
   background-color: #00578a;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 15px 15px;
   text-align: center;
-  padding-top: 2px;
   color: #e2e2e2;
-  box-shadow: 0px 4px #242424;
   font-size: 1em;
   font-family: 'Itim', cursive;
+}
+
+.ImageBox-content:hover {
+  text-decoration: underline;
 }
