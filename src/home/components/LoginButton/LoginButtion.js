@@ -23,7 +23,7 @@ const enhance = compose(
       auth.onAuthStateChanged((user) => {
         if (user) {
           this.props.setLogin(user);
-          this.props.setProfile();
+          this.props.setProfile(user.displayName);
         }
       });
     }

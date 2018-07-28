@@ -21,6 +21,7 @@ const initialState = {
   admin: false,
   approve: false,
   loading: false,
+  displayName: '',
   info: {
     nickname: '',
     prefix: '',
@@ -111,7 +112,7 @@ export const resetProfile = () => ({
   type: RESET_PROFILE
 });
 
-export const setProfile = () => ({
+export const setProfile = (displayName) => ({
   type: SET_PROFILE,
   payload: firestore
     .collection('profile')
@@ -119,7 +120,7 @@ export const setProfile = () => ({
     .get()
     .then((doc) => {
       if (doc.exists) {
-        return doc.data();
+        return { ...doc.data(), displayName };
       } else {
         return initialState;
       }
@@ -135,6 +136,7 @@ export const createProfile = () => ({
       create: true,
       admin: false,
       approve: false,
+      displayName: store.getState().profile.displayName,
       info: store.getState().profile.form
     })
     .then(() => {
