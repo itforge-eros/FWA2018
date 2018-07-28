@@ -122,7 +122,7 @@ export const setProfile = (displayName) => ({
       if (doc.exists) {
         return { ...doc.data(), displayName };
       } else {
-        return initialState;
+        return { ...initialState, displayName };
       }
     })
 });

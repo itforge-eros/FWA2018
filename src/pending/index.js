@@ -1,9 +1,11 @@
 import React from 'react';
-import { compose } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
+
+import { setProfile } from '../profile/redux';
+import { auth } from '../firebase';
 
 import './ProfilePending.css';
 
@@ -13,14 +15,28 @@ const enhance = compose(
   withRouter,
   connect(
     (state) => state,
-    {}
-  )
+    { setProfile }
+  ),
+  lifecycle({
+    componentDidMount() {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.props.setProfile(user.displayName);
+        }
+      });
+    }
+  })
 );
 
 const PendingProfile = (props) => {
   const {
-    profile: { approve, loading, create }
+    profile: { approve, loading, create, displayName },
+    setProfile
   } = props;
+
+  const checkPending = () => {
+    setProfile(displayName);
+  };
 
   const Pending = approve ? (
     <Redirect to="/profile/me" />
@@ -29,7 +45,12 @@ const PendingProfile = (props) => {
       <div className="pending-header">
         <h1>Pending Approval</h1>
       </div>
-      <div className="pending-content">ขณะนี้ทีมงานกำลังตรวจสอบข้อมูลส่วนตัวที่ท่านกรอกครับ</div>
+      <div className="pending-content">
+        ขณะนี้ทีมงานกำลังตรวจสอบข้อมูลส่วนตัวที่ท่านกรอกครับ<br />
+        <p className="pending-check" onClick={() => checkPending()}>
+          ตรวจสอบอีกครั้ง
+        </p>
+      </div>
     </div>
   );
 
@@ -39,7 +60,13 @@ const PendingProfile = (props) => {
 };
 
 PendingProfile.propTypes = {
-  profile: PropTypes.shape({ approve: PropTypes.bool, loading: PropTypes.bool, create: PropTypes.bool })
+  profile: PropTypes.shape({
+    approve: PropTypes.bool,
+    loading: PropTypes.bool,
+    create: PropTypes.bool,
+    displayName: PropTypes.string
+  }),
+  setProfile: PropTypes.func
 };
 
 export default enhance(PendingProfile);

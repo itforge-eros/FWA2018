@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  background-image: url('./assets/bg_sword_tile2.png'); 
+  background-image: url('./assets/bg_sword_tile2.png');
   background-size: cover;
   margin-top: 5.5em;
 }
@@ -10,10 +10,13 @@ footer {
   bottom: 0;
   width: 100%;
   background: #efefef;
-  padding: 5px 0; }
+  padding: 5px 0;
+}
 
 .AppLoader {
-  text-align: center; 
+  text-align: center;
+  font-size: 1.2em;
+  font-family: 'Itim', cursive;
 }
 
 .mainsort-container {
