@@ -29,7 +29,7 @@ const ImageBox = (props) => {
 
   const loading = typeof profile[id] === typeof undefined;
 
-  let Box =
+  let Box = loading ? (
     parseInt(profile[id].year, 10) === selectYear ? (
       <Col xs="6" md="4" lg="3">
         <a>
@@ -47,9 +47,12 @@ const ImageBox = (props) => {
       </Col>
     ) : (
       ''
-    );
+    )
+  ) : (
+    ''
+  );
 
-  return loading ? '' : Box;
+  return Box;
 };
 
 ImageBox.propTypes = {
