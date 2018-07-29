@@ -37,58 +37,6 @@ const App = () => (
           <Container>
             <Routes />
           </Container>
-          {/* <Container>
-              <Row>
-                <Col className="mainsort-container">
-                  <Newsblock />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Profileblock stu_id="60070098" />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Mainquestblock />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Profile stu_id="60070098" />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Editprofile />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Namelist />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Quests />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Scan />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Myqrcode />
-                </Col>
-              </Row>
-              <Row>
-                <Col className="mainsort-container">
-                  <Entercode />
-                </Col>
-              </Row>
-            </Container> */}
         </div>
       </ConnectedRouter>
     </PersistGate>

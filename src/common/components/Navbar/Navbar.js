@@ -41,7 +41,7 @@ const NavBar = (props) => {
 
   return (
     <Navbar dark fixed="top" className="MainNavBar" expand="md">
-      <Link to="/" className="mr-auto MainNavBarBrand">
+      <Link to="/profile/me" className="mr-auto MainNavBarBrand">
         Freshy IT 2018
       </Link>
       <NavbarToggler onClick={() => setCollapse()} className="mr-2" />

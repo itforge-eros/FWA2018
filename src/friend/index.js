@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Route, Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 
-import { compose } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -15,7 +15,12 @@ const enhance = compose(
   connect(
     (state) => state,
     {}
-  )
+  ),
+  lifecycle({
+    componentDidMount() {
+      document.title = 'Freshy IT 2018 | Friend List';
+    }
+  })
 );
 
 // Components

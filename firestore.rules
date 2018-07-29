@@ -13,8 +13,8 @@ service cloud.firestore {
       allow delete: if isAdmin(get(/databases/$(database)/documents/profile/$(userId))) && isSignedIn();
       allow read: if isSignedIn();
 
-      match /info {
-        allow read: if isSignedIn();
+      match /friends/{document=**} {
+        allow  read, update, create, delete: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(userId)));
       }
     }
   }
