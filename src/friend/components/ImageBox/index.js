@@ -30,24 +30,22 @@ const ImageBox = (props) => {
   const loading = typeof profile[id] === typeof undefined;
 
   let Box = loading ? (
-    parseInt(profile[id].year, 10) === selectYear ? (
-      <Col xs="6" md="4" lg="3">
-        <a>
-          <div className="ImageBox-container">
-            <img alt="profile" src={loading ? '' : `${profile[id].photoURL}?width=250`} />
-          </div>
-          <div className="ImageBox-content">
-            <p>
-              {loading ? 'Loading' : profile[id].nickname}
-              <br />
-              {loading ? '' : profile[id].student_id}
-            </p>
-          </div>
-        </a>
-      </Col>
-    ) : (
-      ''
-    )
+    ''
+  ) : parseInt(profile[id].year, 10) === selectYear ? (
+    <Col xs="6" md="4" lg="3">
+      <a>
+        <div className="ImageBox-container">
+          <img alt="profile" src={loading ? '' : `${profile[id].photoURL}?width=250`} />
+        </div>
+        <div className="ImageBox-content">
+          <p>
+            {loading ? 'Loading' : profile[id].nickname}
+            <br />
+            {loading ? '' : profile[id].student_id}
+          </p>
+        </div>
+      </a>
+    </Col>
   ) : (
     ''
   );
