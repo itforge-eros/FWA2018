@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './queststyle.css';
+import React, { Component, Fragment } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import Questpath from '../QuestPath/questpath';
+import QuestPath from '../QuestPath/';
+
+import './QuestList.css';
 
 class Quests extends Component {
   constructor() {
@@ -15,13 +16,13 @@ class Quests extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <div className="questmain-container">
           <div className="questmain-header">
             <h1>Quests</h1>
           </div>
           <div className="questpath-container">
-            <Questpath />
+            <QuestPath />
           </div>
           <Container className="quests-container">
             <Row>
@@ -31,7 +32,7 @@ class Quests extends Component {
                     <h4>◆ {this.state.quest1}</h4>
                   </div>
                   <div className="quest-expire">
-                    <p>P'Joey Expire : 18/06/18</p>
+                    <p>18/06/18</p>
                   </div>
                 </div>
               </Col>
@@ -43,7 +44,7 @@ class Quests extends Component {
                     <h4>◆ {this.state.quest2}</h4>
                   </div>
                   <div className="quest-expire">
-                    <p>P'Joey Expire : 18/06/18</p>
+                    <p>18/06/18</p>
                   </div>
                 </div>
               </Col>
@@ -55,19 +56,24 @@ class Quests extends Component {
                     <h4>◆ {this.state.quest3}</h4>
                   </div>
                   <div className="quest-expire">
-                    <p>P'Joey Expire : 18/06/18</p>
+                    <p>18/06/18</p>
                   </div>
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
+        <div className="questqr-container">
+          <Button color="success" size="lg">
+            เช็คชื่อเควส
+          </Button>
+        </div>
         <div className="questbtn-container">
           <Button color="warning" size="lg">
             ล่ารายชื่อ
           </Button>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

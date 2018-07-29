@@ -6,7 +6,7 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Loadable from 'react-loadable';
+// import Loadable from 'react-loadable';
 import AppLoader from '../common/components/AppLoader';
 
 // enhance
@@ -19,12 +19,12 @@ const enhance = compose(
 );
 
 // Components
-const QuestList = Loadable({
-  loader: () => import('./list'),
-  loading: AppLoader
-});
+// const QuestList = Loadable({
+//   loader: () => import('./list'),
+//   loading: AppLoader
+// });
 
-const Quest = (props) => {
+const Code = (props) => {
   const {
     profile: { create, loading, approve },
     router: {
@@ -39,12 +39,13 @@ const Quest = (props) => {
       {!create && pathname !== '/profile/create' ? <Redirect to="/profile/create" /> : ''}
       {create && !approve && pathname !== '/pending' ? <Redirect to="/pending" /> : ''}
 
-      <Route path="/quests/list" component={QuestList} />
+      <Route path="/code/quest" />
+      <Route path="/code/friend" />
     </Fragment>
   );
 };
 
-Quest.propTypes = {
+Code.propTypes = {
   profile: PropTypes.shape({
     create: PropTypes.bool,
     approve: PropTypes.bool,
@@ -57,4 +58,4 @@ Quest.propTypes = {
   })
 };
 
-export default enhance(Quest);
+export default enhance(Code);
