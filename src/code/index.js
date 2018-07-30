@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 
 import { compose } from 'recompose';
