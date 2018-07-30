@@ -1,10 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose, lifecycle } from 'recompose';
 
 import { Container, Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import QRReader from 'react-qr-reader';
 
 import './ScanQRCode.css';
+
+const enhance = compose(
+  connect(
+    (state) => state,
+    {}
+  ),
+  lifecycle({
+    conponentDidMount() {}
+  })
+);
 
 const ScanQRCode = () => {
   return (
@@ -25,9 +37,9 @@ const ScanQRCode = () => {
         </Row>
         <Row>
           <Col className="scanbutton-container">
-            <Link to="/code/fscan">
-              <Button color="warning" size="lg">
-                Scan
+            <Link to="/code/friend">
+              <Button color="success" size="lg">
+                My QRCode
               </Button>
             </Link>
           </Col>
@@ -37,4 +49,4 @@ const ScanQRCode = () => {
   );
 };
 
-export default ScanQRCode;
+export default enhance(ScanQRCode);

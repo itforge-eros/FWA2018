@@ -17,5 +17,15 @@ service cloud.firestore {
         allow  read, update, create, delete: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(userId)));
       }
     }
+    match /config/{document=**} {
+      function isAdmin(resource) {
+          return resource.data.admin;
+      }
+
+
+      allow read: if true;
+      allow update: if isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
+
+    }
   }
 }

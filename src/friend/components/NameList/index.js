@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 
+import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'reactstrap';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
@@ -42,9 +43,11 @@ const Namelist = () => {
         </Container>
       </div>
       <div className="qrbutton-container">
-        <Button color="danger" size="lg">
-          Go to QR code
-        </Button>
+        <Link to="/code/friend">
+          <Button color="danger" size="lg">
+            Go to QR code
+          </Button>
+        </Link>
       </div>
     </Fragment>
   );
