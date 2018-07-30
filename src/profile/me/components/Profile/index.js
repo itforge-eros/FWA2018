@@ -57,11 +57,11 @@ const MyProfile = (props) => {
             <Row>
               <Col className="quest-status1">
                 <h4>หลัก</h4>
-                <h2 id="number-pass">112</h2>
+                <h2 id="number-pass">0</h2>
               </Col>
               <Col className="quest-status2">
                 <h4>พิเศษ</h4>
-                <h2 id="number-pass">112</h2>
+                <h2 id="number-pass">0</h2>
               </Col>
             </Row>
           </Col>

@@ -6,7 +6,7 @@ import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// import Loadable from 'react-loadable';
+import Loadable from 'react-loadable';
 import AppLoader from '../common/components/AppLoader';
 
 // enhance
@@ -19,10 +19,15 @@ const enhance = compose(
 );
 
 // Components
-// const QuestList = Loadable({
-//   loader: () => import('./list'),
-//   loading: AppLoader
-// });
+const Friend = Loadable({
+  loader: () => import('./friend'),
+  loading: AppLoader
+});
+
+const Quest = Loadable({
+  loader: () => import('./quest'),
+  loading: AppLoader
+});
 
 const Code = (props) => {
   const {
@@ -39,8 +44,8 @@ const Code = (props) => {
       {!create && pathname !== '/profile/create' ? <Redirect to="/profile/create" /> : ''}
       {create && !approve && pathname !== '/pending' ? <Redirect to="/pending" /> : ''}
 
-      <Route path="/code/quest" />
-      <Route path="/code/friend" />
+      <Quest />
+      <Friend />
     </Fragment>
   );
 };

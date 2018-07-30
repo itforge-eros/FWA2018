@@ -31,15 +31,13 @@ const NameList = Loadable({
 
 const Friend = (props) => {
   const {
-    profile: { create, loading, approve },
+    profile: { create, approve },
     router: {
       location: { pathname }
     }
   } = props;
 
-  return loading ? (
-    <AppLoader isLoading={true} />
-  ) : (
+  return (
     <Fragment>
       {!create && pathname !== '/profile/create' ? <Redirect to="/profile/create" /> : ''}
       {create && !approve && pathname !== '/pending' ? <Redirect to="/pending" /> : ''}
@@ -52,8 +50,7 @@ const Friend = (props) => {
 Friend.propTypes = {
   profile: PropTypes.shape({
     create: PropTypes.bool,
-    approve: PropTypes.bool,
-    loading: PropTypes.bool
+    approve: PropTypes.bool
   }),
   router: PropTypes.shape({
     location: PropTypes.shape({
