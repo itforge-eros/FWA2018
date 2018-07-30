@@ -71,7 +71,7 @@ const EditProfile = (props) => {
           </Input>
         </FormGroup>
         <FormGroup className="EditProfileForm">
-          <Label>สาขา</Label>
+          <Label>ชั้นปี</Label>
           <Input type="select" onChange={(e) => setForm('year', e.target.value)} value={year}>
             <option value="1">ปี 1</option>
             <option value="2">ปี 2</option>
@@ -84,13 +84,8 @@ const EditProfile = (props) => {
           <Input onChange={(e) => setForm('address', e.target.value)} value={address} />
         </FormGroup>
         <FormGroup className="EditProfileForm">
-          <Label for="address">แนะนำตัวสั้นๆกันหน่อย!</Label>
-          <Input
-            type="textarea"
-            name="address"
-            onChange={(e) => setForm('introduction', e.target.value)}
-            value={introduction}
-          />
+          <Label for="introduction">แนะนำตัวสั้นๆกันหน่อย!</Label>
+          <Input name="introduction" onChange={(e) => setForm('introduction', e.target.value)} value={introduction} />
         </FormGroup>
         <div className="Submitpf-btn">
           <Link to="/profile/me">

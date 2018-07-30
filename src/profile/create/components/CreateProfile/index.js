@@ -36,8 +36,8 @@ const CreateProfile = (props) => {
       </div>
       <Form>
         <FormGroup className="CreateProfileForm">
-          <Label>ชื่อเล่น</Label>
-          <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} required />
+          <Label for="nickname">ชื่อเล่น</Label>
+          <Input name="nickname" onChange={(e) => setForm('nickname', e.target.value)} value={nickname} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>คำนำหน้า</Label>
@@ -56,20 +56,25 @@ const CreateProfile = (props) => {
           <Input onChange={(e) => setForm('lastname', e.target.value)} value={lastname} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label>เลขประจำตัวนักศึกษา</Label>
-          <Input onChange={(e) => setForm('student_id', e.target.value)} value={student_id} required />
+          <Label for="student_id">เลขประจำตัวนักศึกษา</Label>
+          <Input
+            name="student_id"
+            onChange={(e) => setForm('student_id', e.target.value)}
+            value={student_id}
+            required
+          />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label>สาขา</Label>
-          <Input type="select" onChange={(e) => setForm('branch', e.target.value)} value={branch}>
+          <Label for="branch">สาขา</Label>
+          <Input name="branch" type="select" onChange={(e) => setForm('branch', e.target.value)} value={branch}>
             <option value="IT">IT</option>
             <option value="DSBA">DSBA</option>
             <option value="BIT">BIT</option>
           </Input>
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label>สาขา</Label>
-          <Input type="select" onChange={(e) => setForm('year', e.target.value)} value={year}>
+          <Label for="year">ชั้นปี</Label>
+          <Input name="year" type="select" onChange={(e) => setForm('year', e.target.value)} value={year}>
             <option value="1">ปี 1</option>
             <option value="2">ปี 2</option>
             <option value="3">ปี 3</option>
@@ -77,14 +82,13 @@ const CreateProfile = (props) => {
           </Input>
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label>ที่อยู่ (เช่น บ้าน, เกกี, วีคอนโด)</Label>
-          <Input onChange={(e) => setForm('address', e.target.value)} value={address} required />
+          <Label for="address">ที่อยู่ (เช่น บ้าน, เกกี, วีคอนโด)</Label>
+          <Input name="address" onChange={(e) => setForm('address', e.target.value)} value={address} required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label for="address">แนะนำตัวสั้นๆกันหน่อย!</Label>
+          <Label for="introduction">แนะนำตัวสั้นๆกันหน่อย!</Label>
           <Input
-            type="textarea"
-            name="address"
+            name="introduction"
             onChange={(e) => setForm('introduction', e.target.value)}
             value={introduction}
             required
