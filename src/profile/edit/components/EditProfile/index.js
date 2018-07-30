@@ -32,12 +32,20 @@ const EditProfile = (props) => {
     }
   } = props;
 
+  const keyEnterPress = (e) => {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      editProfile();
+    }
+  };
+
   return (
     <div className="editprofile-container">
       <div className="editprofile-header">
         <h3>Edit Profile</h3>
       </div>
-      <Form>
+      <Form onKeyDown={(e) => keyEnterPress(e)}>
         <FormGroup className="EditProfileForm">
           <Label>ชื่อเล่น</Label>
           <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />

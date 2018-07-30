@@ -29,12 +29,20 @@ const CreateProfile = (props) => {
     }
   } = props;
 
+  const keyEnterPress = (e) => {
+    if (e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      e.stopPropagation();
+      createProfile();
+    }
+  };
+
   return (
     <div className="createprofile-container">
       <div className="createprofile-header">
         <h3>Create Profile</h3>
       </div>
-      <Form>
+      <Form onKeyDown={(e) => keyEnterPress(e)}>
         <FormGroup className="CreateProfileForm">
           <Label for="nickname">ชื่อเล่น</Label>
           <Input name="nickname" onChange={(e) => setForm('nickname', e.target.value)} value={nickname} required />
