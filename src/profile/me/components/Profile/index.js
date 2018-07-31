@@ -1,11 +1,11 @@
 import React from 'react';
-import { Row, Col, Container, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Row, Col, Container } from 'reactstrap';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Profile.css';
 
@@ -66,7 +66,7 @@ const MyProfile = (props) => {
             </Row>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col className="btn-container">
             <Link to="/profile/edit">
               <Button color="secondary" size="lg">
@@ -74,7 +74,7 @@ const MyProfile = (props) => {
               </Button>
             </Link>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </div>
   );

@@ -19,10 +19,10 @@ const enhance = compose(
 );
 
 // Components
-const EditProfile = Loadable({
-  loader: () => import('./edit'),
-  loading: AppLoader
-});
+// const EditProfile = Loadable({
+//   loader: () => import('./edit'),
+//   loading: AppLoader
+// });
 
 const MyProfile = Loadable({
   loader: () => import('./me'),
@@ -50,7 +50,7 @@ const Profile = (props) => {
       {create && !approve && pathname !== '/pending' ? <Redirect to="/pending" /> : ''}
 
       <Route path="/profile/me" component={MyProfile} />
-      <Route path="/profile/edit" component={EditProfile} />
+      {/* <Route path="/profile/edit" component={EditProfile} /> */}
       <Route path="/profile/create" component={CreateProfile} />
     </Fragment>
   );
