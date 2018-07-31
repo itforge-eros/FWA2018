@@ -18,6 +18,11 @@ const Home = Loadable({
   loading: AppLoader
 });
 
+const Admin = Loadable({
+  loader: () => import('./admin'),
+  loading: AppLoader
+});
+
 const Profile = Loadable({
   loader: () => import('./profile'),
   loading: AppLoader
@@ -66,6 +71,7 @@ const Router = (props) => {
         <Route path="/profile/:page">{login ? <Profile /> : <Redirect to="/" />}</Route>
         <Route path="/quests/:page">{login ? <Quest /> : <Redirect to="/" />}</Route>
         <Route path="/friends/:page">{login ? <Friend /> : <Redirect to="/" />}</Route>
+        <Route path="/admin/:page">{login ? <Admin /> : <Redirect to="/" />}</Route>
         <Route path="/code/:page">{login ? <Code /> : <Redirect to="/" />}</Route>
         <Route path="*">{login ? <PageNotFound /> : <Redirect to="/" />}</Route>
       </Switch>

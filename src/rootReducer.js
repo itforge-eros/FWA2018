@@ -5,12 +5,14 @@ import user from './home/redux';
 import navbar from './common/components/Navbar/redux';
 import profile from './profile/redux';
 import friends from './friend/redux';
+import admin from './admin/redux';
 
 const rootReducer = combineReducers({
   user,
   navbar,
   profile,
-  friends
+  friends,
+  admin
 });
 
 export default rootReducer;

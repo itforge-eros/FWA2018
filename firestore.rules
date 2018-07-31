@@ -9,12 +9,12 @@ service cloud.firestore {
           return request.auth != null;
       }
 
-      allow  update, create: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(userId)));
-      allow delete: if isAdmin(get(/databases/$(database)/documents/profile/$(userId))) && isSignedIn();
+      allow  update, create: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
+      allow delete: if isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid))) && isSignedIn();
       allow read: if isSignedIn();
 
       match /friends/{document=**} {
-        allow  read, update, create, delete: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(userId)));
+        allow  read, update, create, delete: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
       }
     }
     match /config/{document=**} {
