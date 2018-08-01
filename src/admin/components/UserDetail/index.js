@@ -29,6 +29,7 @@ const UserDetail = (props) => {
     editProfile,
     admin: {
       loading,
+      displayName,
       form: { nickname, prefix, firstname, lastname, student_id, branch, address, introduction, year }
     },
     match: {
@@ -52,6 +53,14 @@ const UserDetail = (props) => {
         <h3>Edit Profile</h3>
       </div>
       <Form onKeyDown={(e) => keyEnterPress(e)}>
+        <FormGroup className="UserDetailForm">
+          <Label>ชื่อ Facebook</Label>
+          <Input value={displayName} disabled />
+        </FormGroup>
+        <FormGroup className="UserDetailForm">
+          <Label>ชื่อเล่น</Label>
+          <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />
+        </FormGroup>
         <FormGroup className="UserDetailForm">
           <Label>ชื่อเล่น</Label>
           <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />

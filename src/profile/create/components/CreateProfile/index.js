@@ -45,7 +45,13 @@ const CreateProfile = (props) => {
       <Form onKeyDown={(e) => keyEnterPress(e)}>
         <FormGroup className="CreateProfileForm">
           <Label for="nickname">ชื่อเล่น</Label>
-          <Input name="nickname" onChange={(e) => setForm('nickname', e.target.value)} value={nickname} required />
+          <Input
+            name="nickname"
+            onChange={(e) => setForm('nickname', e.target.value)}
+            value={nickname}
+            placeholder="ลาดกระบัง"
+            required
+          />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>คำนำหน้า</Label>
@@ -57,18 +63,24 @@ const CreateProfile = (props) => {
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>ชื่อจริง</Label>
-          <Input onChange={(e) => setForm('firstname', e.target.value)} value={firstname} required />
+          <Input onChange={(e) => setForm('firstname', e.target.value)} value={firstname} placeholder="ไอที" required />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label>นามสกุล</Label>
-          <Input onChange={(e) => setForm('lastname', e.target.value)} value={lastname} required />
+          <Input
+            onChange={(e) => setForm('lastname', e.target.value)}
+            value={lastname}
+            placeholder="ลาดกระบัง"
+            required
+          />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label for="student_id">เลขประจำตัวนักศึกษา</Label>
+          <Label for="student_id">เลขประจำตัวนักศึกษา (เช่น 60070xxx)</Label>
           <Input
             name="student_id"
             onChange={(e) => setForm('student_id', e.target.value)}
             value={student_id}
+            placeholder="60070xxx 59070xxx 58070xxx"
             required
           />
         </FormGroup>
@@ -91,7 +103,13 @@ const CreateProfile = (props) => {
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label for="address">ที่อยู่ (เช่น บ้าน, เกกี, วีคอนโด)</Label>
-          <Input name="address" onChange={(e) => setForm('address', e.target.value)} value={address} required />
+          <Input
+            name="address"
+            onChange={(e) => setForm('address', e.target.value)}
+            value={address}
+            placeholder="บ้าน"
+            required
+          />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
           <Label for="introduction">แนะนำตัวสั้นๆกันหน่อย!</Label>
@@ -99,6 +117,7 @@ const CreateProfile = (props) => {
             name="introduction"
             onChange={(e) => setForm('introduction', e.target.value)}
             value={introduction}
+            placeholder="แนะนำตัวกันหน่อย"
             required
           />
         </FormGroup>
