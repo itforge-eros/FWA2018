@@ -20,7 +20,9 @@ const enhance = compose(
 
 const AlertBox = (props) => {
   const {
-    code: { error, message },
+    code: {
+      friend: { error, message }
+    },
     resetError
   } = props;
 
@@ -33,8 +35,10 @@ const AlertBox = (props) => {
 
 AlertBox.propTypes = {
   code: PropTypes.shape({
-    error: PropTypes.bool,
-    message: PropTypes.string
+    friend: PropTypes.shape({
+      error: PropTypes.bool,
+      message: PropTypes.string
+    })
   }),
   resetError: PropTypes.func
 };

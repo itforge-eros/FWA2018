@@ -3,6 +3,7 @@ import axios from 'axios';
 const ADD_FRIEND = 'ADD_FRIEND';
 const ADD_FRIEND_PENDING = `${ADD_FRIEND}_PENDING`;
 const ADD_FRIEND_FULFILLED = `${ADD_FRIEND}_FULFILLED`;
+const ADD_FRIEND_REJECTED = `${ADD_FRIEND}_REJECTED`;
 const FRIEND_RESET_ERROR = 'FRIEND_RESET_ERROR';
 
 const initialState = {
@@ -20,6 +21,9 @@ const action = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case ADD_FRIEND_FULFILLED:
+      return { ...state, loading: false, friend: action.payload };
+
+    case ADD_FRIEND_REJECTED:
       return { ...state, loading: false, friend: action.payload };
 
     case FRIEND_RESET_ERROR:
@@ -43,8 +47,7 @@ export const addFriend = (data, uid) => ({
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
-      Promise.reject();
+      return { error: true, message: 'Something went wrong!' };
     })
 });
 

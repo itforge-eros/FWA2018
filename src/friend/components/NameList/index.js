@@ -24,6 +24,13 @@ const enhance = compose(
 const Namelist = () => {
   return (
     <Fragment>
+      <div className="qrbutton-container">
+        <Link to="/code/friend">
+          <Button color="danger" size="lg">
+            Go to QR code
+          </Button>
+        </Link>
+      </div>
       <div className="namelist-container">
         <div className="namelist-header">
           <h2>Friends List</h2>
@@ -41,13 +48,6 @@ const Namelist = () => {
             </Col>
           </Row>
         </Container>
-      </div>
-      <div className="qrbutton-container">
-        <Link to="/code/friend">
-          <Button color="danger" size="lg">
-            Go to QR code
-          </Button>
-        </Link>
       </div>
     </Fragment>
   );

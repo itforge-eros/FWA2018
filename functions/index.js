@@ -15,7 +15,7 @@ firestore.settings({ timestampsInSnapshots: true });
 exports.friend = functions.https.onRequest(async (request, response) => {
   // Check request method
   if (request.method !== 'POST') {
-    return response.status(400).send({ message: 'I am not happy' });
+    return response.status(200).send({ message: 'I am not happy' });
   }
 
   // Get current key
@@ -36,11 +36,11 @@ exports.friend = functions.https.onRequest(async (request, response) => {
 
   // Key validation
   if (userkey !== key) {
-    return response.status(400).send({ error: true, message: 'Key not valid' });
+    return response.status(200).send({ error: true, message: 'Key not valid' });
   }
 
   if (requester === userid) {
-    return response.status(400).send({ error: true, message: 'แอดตัวเองไม่ได้นะ~' });
+    return response.status(200).send({ error: true, message: 'แอดตัวเองไม่ได้นะ~' });
   }
 
   // Check requester
