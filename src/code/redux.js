@@ -47,3 +47,7 @@ export const addFriend = (data, uid) => ({
       Promise.reject();
     })
 });
+
+export const resetError = () => ({
+  type: FRIEND_RESET_ERROR
+});
