@@ -61,13 +61,14 @@
         "destination": "/term.html"
       },
       {
-        "source": "**",
-        "destination": "/index.html"
-      },
-      {
         "source": "/api/friend",
         "function": "friend"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
+
     ]
   }
 }
