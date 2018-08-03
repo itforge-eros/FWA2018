@@ -39,6 +39,10 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     return response.status(400).send({ error: true, message: 'Key not valid' });
   }
 
+  if (requester === userid) {
+    return response.status(400).send({ error: true, message: 'แอดตัวเองไม่ได้นะ~' });
+  }
+
   // Check requester
   let profile = await firestore
     .collection('profile')

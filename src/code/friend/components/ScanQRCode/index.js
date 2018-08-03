@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose';
@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import QRReader from 'react-qr-reader';
 
 import { addFriend } from '../../../redux';
+
+import AlertBox from '../AlertBox';
 
 import './ScanQRCode.css';
 
@@ -26,13 +28,15 @@ const ScanQRCode = (props) => {
     user: {
       user: { uid }
     },
-    code: { loading },
+    code: {
+      loading,
+      friend: { message }
+    },
     addFriend
   } = props;
 
   const handleScan = (data) => {
     if (data) {
-      console.log(data);
       addFriend(data, uid);
     }
   };
@@ -42,41 +46,44 @@ const ScanQRCode = (props) => {
   };
 
   return (
-    <div className="myqr-container">
-      <div className="myqr-header">
-        <h3>QRCode Scanner</h3>
+    <Fragment>
+      {message ? <AlertBox /> : ''}
+      <div className="myqr-container">
+        <div className="myqr-header">
+          <h3>QRCode Scanner</h3>
+        </div>
+        <Container className="qrcode-container">
+          <Row>
+            <Col className="myqrcode-container">
+              {loading ? (
+                <div className="AppLoader">Adding Friend</div>
+              ) : (
+                <QRReader
+                  delay={300}
+                  style={{ width: '100%', maxWidth: '600px' }}
+                  onScan={handleScan}
+                  onError={handleError}
+                />
+              )}
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p className="qrcode-description">ใช้สำหรับกิจกรรมล่ารายชื่อ</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="scanbutton-container">
+              <Link to="/code/friend">
+                <Button color="success" size="lg">
+                  My QRCode
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
       </div>
-      <Container className="qrcode-container">
-        <Row>
-          <Col className="myqrcode-container">
-            {loading ? (
-              <div className="AppLoader">Adding Friend</div>
-            ) : (
-              <QRReader
-                delay={300}
-                style={{ width: '100%', maxWidth: '600px' }}
-                onScan={handleScan}
-                onError={handleError}
-              />
-            )}
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p className="qrcode-description">ใช้สำหรับกิจกรรมล่ารายชื่อ</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="scanbutton-container">
-            <Link to="/code/friend">
-              <Button color="success" size="lg">
-                My QRCode
-              </Button>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    </Fragment>
   );
 };
 
