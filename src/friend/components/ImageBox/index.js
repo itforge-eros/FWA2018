@@ -26,7 +26,7 @@ const ImageBox = (props) => {
     friends: { profile, selectYear },
     id
   } = props;
-
+  console.log(profile);
   const loading = typeof profile[id] === typeof undefined;
 
   let Box = loading ? (

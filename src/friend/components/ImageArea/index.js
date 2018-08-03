@@ -30,14 +30,12 @@ const ImageArea = (props) => {
   const {
     friends: { friends, loading }
   } = props;
-
   return (
     <Container>
       <Row>
         {loading ? (
           <div className="ImageArea-loading">Loading Friends...</div>
         ) : (
-          // <div className="ImageArea-loading">Loading Friends...</div>
           friends.map((friend) => {
             return <ImageBox id={friend} key={friend} />;
           })

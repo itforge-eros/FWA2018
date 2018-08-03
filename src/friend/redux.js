@@ -30,7 +30,7 @@ const action = (state = initialState, action) => {
       return state;
 
     case GET_PROFILE_FULFILLED:
-      return { ...state, loading: false, profile: { ...action.payload } };
+      return { ...state, loading: false, profile: { ...state.profile, ...action.payload } };
 
     default:
       return state;
@@ -47,26 +47,6 @@ export const changeYear = (value) => ({
 export const getFriends = (uid) => {
   return {
     type: GET_FRIEND,
-    // payload: Promise.resolve({
-    //   '7ZdyWhFkLAYVdhI5v3XmdVtNFJf2': {
-    //     admin: false,
-    //     approve: true,
-    //     create: true,
-    //     displayName: 'Thanapon Wongprasert',
-    //     info: {
-    //       address: 'RNP',
-    //       branch: 'IT',
-    //       firstname: 'ธนพนธ์',
-    //       introduction: '',
-    //       lastname: 'วงศ์ประเสริฐ',
-    //       nickname: 'แจ็ค',
-    //       prefix: 'นาย',
-    //       student_id: '60070031',
-    //       year: '2'
-    //     },
-    //     photoURL: 'https://graph.facebook.com/2102858073303114/picture'
-    //   }
-    // })
     payload: firestore
       .collection('profile')
       .doc(uid)
@@ -75,11 +55,6 @@ export const getFriends = (uid) => {
       .then((result) => {
         let friends = [];
         result.forEach(async (friend) => {
-          // friends[friend.id] = await firestore
-          //   .collection('profile')
-          //   .doc(friend.id)
-          //   .get()
-          //   .then((result) => ({ ...result.data().info, photoURL: result.data().photoURL }));
           friends.push(friend.id);
         });
         return friends;
