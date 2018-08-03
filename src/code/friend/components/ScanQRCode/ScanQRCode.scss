@@ -24,15 +24,14 @@
   padding-bottom: 0.5em;
 }
 
-.myqrcode-container canvas {
-  width: 100% !important;
-  max-width: 200px;
-  max-height: 200px;
+.myqrcode-container section {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .qrcode-description {
   font-size: 1.5em;
-  font-family: 'Itim', cursive;
+  font-family: 'Kanit', cursive;
 }
 
 .scanbutton-container button {

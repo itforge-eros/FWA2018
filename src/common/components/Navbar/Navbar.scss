@@ -1,46 +1,46 @@
 .MainNavBar {
-    background-color: #262728;
+  background-color: #262728;
 }
 
 .MainNavBarLink {
-    display: block;
-    padding: 0.5rem 1rem;
-    padding-right: 0;
-    padding-left: 0;
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7) !important;
-    background-color: transparent;
-    font-family: 'Itim', cursive;
+  display: block;
+  padding: 0.5rem 1rem;
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7) !important;
+  background-color: transparent;
+  font-family: 'Kanit', cursive;
 }
 
 .MainNavBarLink:hover {
-    color: rgba(255, 255, 255, 1) !important;
-    text-decoration: none;
-    cursor: pointer;
-    font-family: 'Itim', cursive;
+  color: rgba(255, 255, 255, 1) !important;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Kanit', cursive;
 }
 
 .MainNavBarBrand {
-    color: #fff;
-    display: inline-block;
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-    font-size: 1.3rem;
-    line-height: inherit;
-    white-space: nowrap;
-    text-decoration: none;
-    background-color: transparent;
-    font-family: 'Itim', cursive;
+  color: #fff;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  font-size: 1.3rem;
+  line-height: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+  background-color: transparent;
+  font-family: 'Kanit', cursive;
 }
 
 .MainNavBarBrand:hover {
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Itim', cursive;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Kanit', cursive;
 }
 
 @media (min-width: 768px) {
-    .MainNavBarLink {
-        margin-left: 1rem;
-    }
+  .MainNavBarLink {
+    margin-left: 1rem;
+  }
 }

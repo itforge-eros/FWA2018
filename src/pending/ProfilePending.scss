@@ -1,33 +1,33 @@
 .pending-container {
-    width: 100%;
-    background: #2b2b2b;
-    border-radius: 15px;
-    box-shadow: 0px 10px #5faff0;
-    background: #a2d5ff;
-    overflow: hidden;
+  width: 100%;
+  background: #2b2b2b;
+  border-radius: 15px;
+  box-shadow: 0px 10px #5faff0;
+  background: #a2d5ff;
+  overflow: hidden;
 }
 
 .pending-header {
-    background-color: #ffae00;
-    padding: 0.1px;
-    color: #f7f7f7;
-    text-align: center;
-    border-radius: 15px 15px 0px 0px;
-    font-family: 'Press Start 2P', cursive;
-    padding-top: 0.5em;
+  background-color: #ffae00;
+  padding: 0.1px;
+  color: #f7f7f7;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+  font-family: 'Press Start 2P', cursive;
+  padding-top: 0.5em;
 }
 
 .pending-content {
-    width: 100%;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    font-size: 1.3em;
-    text-align: center;
-    font-family: 'Itim', cursive;
+  width: 100%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  font-size: 1.3em;
+  text-align: center;
+  font-family: 'Kanit', cursive;
 }
 
 .pending-check {
-    margin-top: 0.5em;
-    cursor: pointer;
-    text-decoration: underline;
+  margin-top: 0.5em;
+  cursor: pointer;
+  text-decoration: underline;
 }

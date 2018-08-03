@@ -62,10 +62,6 @@ const UserDetail = (props) => {
           <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />
         </FormGroup>
         <FormGroup className="UserDetailForm">
-          <Label>ชื่อเล่น</Label>
-          <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
           <Label>คำนำหน้า</Label>
           <Input type="select" onChange={(e) => setForm('prefix', e.target.value)} value={prefix}>
             <option value="นาย">นาย</option>

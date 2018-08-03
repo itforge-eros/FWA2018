@@ -75,12 +75,13 @@ const CreateProfile = (props) => {
           />
         </FormGroup>
         <FormGroup className="CreateProfileForm">
-          <Label for="student_id">เลขประจำตัวนักศึกษา (เช่น 60070xxx)</Label>
+          <Label for="student_id">เลขประจำตัวนักศึกษา (เช่น 61070001)</Label>
           <Input
             name="student_id"
             onChange={(e) => setForm('student_id', e.target.value)}
             value={student_id}
-            placeholder="60070xxx 59070xxx 58070xxx"
+            placeholder="61070xxx"
+            maxLength={8}
             required
           />
         </FormGroup>

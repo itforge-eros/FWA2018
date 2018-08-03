@@ -31,13 +31,18 @@ class UserList extends Component {
     this.setState({ loading: true, users: [] });
     firestore
       .collection('profile')
+      .where('create', '==', true)
       .get()
       .then((querySnapshot) => {
         let users = [];
         querySnapshot.forEach((doc) => {
           users.push({ ...doc.data().info, id: doc.id, approve: doc.data().approve });
         });
-        this.setState({ users, loading: false });
+        users.sort((a, b) => parseInt(a.student_id, 10) - parseInt(b.student_id, 10));
+        this.setState({
+          users,
+          loading: false
+        });
       });
   }
 
@@ -54,14 +59,26 @@ class UserList extends Component {
       });
   }
 
+  reset(uid) {
+    this.setState({ loading: true });
+    firestore
+      .collection('profile')
+      .doc(uid)
+      .update({
+        approve: false,
+        create: false
+      })
+      .then(() => {
+        this.getList();
+      });
+  }
+
   changeYear(year) {
     this.setState({ year: year });
   }
 
   render() {
     const { users, loading, year } = this.state;
-
-    users.sort((a, b) => a.student_id > b.student_id);
 
     return loading ? (
       <div className="AppLoader">Loading...</div>
@@ -135,7 +152,7 @@ class UserList extends Component {
                   <td>
                     <Link to={`/admin/user/detail/${user.id}`}>
                       <Button color="primary" size="sm">
-                        View
+                        View / Edit
                       </Button>
                     </Link>{' '}
                     <Button
@@ -145,6 +162,9 @@ class UserList extends Component {
                       disabled={user.approve}
                     >
                       {user.approve ? 'Approved' : 'Approve'}
+                    </Button>{' '}
+                    <Button color="danger" onClick={() => this.reset(user.id)} size="sm">
+                      Reset
                     </Button>
                   </td>
                 </tr>

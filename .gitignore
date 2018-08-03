@@ -22,3 +22,5 @@ yarn-error.log*
 
 # css files generated from the .scss files
 *.css
+
+service_account.json

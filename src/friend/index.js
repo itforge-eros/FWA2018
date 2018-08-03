@@ -29,7 +29,7 @@ const NameList = Loadable({
   loading: AppLoader
 });
 
-const Friend = (props) => {
+const Friends = (props) => {
   const {
     profile: { create, approve },
     router: {
@@ -47,7 +47,7 @@ const Friend = (props) => {
   );
 };
 
-Friend.propTypes = {
+Friends.propTypes = {
   profile: PropTypes.shape({
     create: PropTypes.bool,
     approve: PropTypes.bool
@@ -59,4 +59,4 @@ Friend.propTypes = {
   })
 };
 
-export default enhance(Friend);
+export default enhance(Friends);
