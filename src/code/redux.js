@@ -40,7 +40,7 @@ export const addFriend = (data, uid) => ({
       requester: uid
     })
     .then((response) => {
-      return response;
+      return response.data;
     })
     .catch((error) => {
       console.log(error);
