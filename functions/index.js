@@ -114,14 +114,15 @@ exports.random = functions.https.onRequest(async (request, response) => {
     return response.status(401).send({ message: 'Failed' });
   }
 
-  firestore
+  let value = Math.random()
+    .toString(36)
+    .substr(2, 8);
+
+  await firestore
     .collection('config')
     .doc('random')
     .set({
-      value: Math.random()
-        .toString(36)
-        .substr(2, 8)
+      value
     });
-
   return response.status(200).send({ message: 'Success' });
 });
