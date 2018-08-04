@@ -65,6 +65,10 @@
         "function": "friend"
       },
       {
+        "source": "/api/random",
+        "function": "random"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

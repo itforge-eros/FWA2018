@@ -107,3 +107,22 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     });
   return response.status(200).send({ error: false, message: 'success' });
 });
+
+exports.random = functions.https.onRequest(async (request, response) => {
+  let key = functions.config().random.key;
+
+  if (request.body.key !== key) {
+    return response.status(401);
+  }
+
+  firestore
+    .collection('config')
+    .doc('random')
+    .update({
+      value: Math.random()
+        .toString(36)
+        .substr(2, 8)
+    });
+
+  return response.status(200).send({ message: 'Success' });
+});
