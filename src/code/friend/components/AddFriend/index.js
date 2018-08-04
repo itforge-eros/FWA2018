@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
+import { Link } from 'react-router-dom';
 
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
+
 import AlertBox from '../AlertBox';
 
 import { addFriend } from '../../../redux';
@@ -45,10 +47,21 @@ class AddFriend extends Component {
           <h3>Add Friend</h3>
         </div>
         <Container className="qrcode-container">
-          <Row>{message ? <AlertBox /> : 'Adding~'}</Row>
+          <Row>
+            <Col className="qrcode-container">{message ? <AlertBox /> : 'Adding~'}</Col>
+          </Row>
           <Row>
             <Col>
               <p className="qrcode-description">ใช้สำหรับกิจกรรมล่ารายชื่อ</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="scanbutton-container">
+              <Link to="/friends/list">
+                <Button color="info" size="lg">
+                  Friends List
+                </Button>
+              </Link>
             </Col>
           </Row>
         </Container>
