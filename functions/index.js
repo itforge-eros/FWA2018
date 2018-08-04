@@ -29,7 +29,8 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     });
 
   // Get some id
-  let id = request.body.id;
+  let id = request.body.id.substring(36);
+  console.log(id);
   let requester = request.body.requester;
   let userkey = id.substring(0, 8);
   let userid = id.substring(8);

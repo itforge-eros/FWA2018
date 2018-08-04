@@ -24,10 +24,16 @@ const ScanQRCode = Loadable({
   loading: AppLoader
 });
 
+const AddFriend = Loadable({
+  loader: () => import('./components/AddFriend'),
+  loading: AppLoader
+});
+
 const QRCode = () => {
   return (
     <Fragment>
       <Route path="/code/fscan" component={ScanQRCode} />
+      <Route path="/code/fadd/:id" component={AddFriend} />
       <Route path="/code/friend" component={MyQRCode} />
     </Fragment>
   );

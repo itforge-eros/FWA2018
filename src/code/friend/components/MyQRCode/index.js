@@ -55,7 +55,7 @@ class MyQRCode extends Component {
               {random === '' ? (
                 <p className="qrcode-description">Loading...</p>
               ) : (
-                <QRCode value={`${random}${uid}`} size={200} />
+                <QRCode value={`https://freshy.itforge.io/code/fadd/${random}${uid}`} size={200} />
               )}
             </Col>
           </Row>
