@@ -33,7 +33,6 @@ exports.friend = functions.https.onRequest(async (request, response) => {
   if (id.length > 36) {
     id = id.substring(36);
   }
-  console.log(id);
   let requester = request.body.requester;
   let userkey = id.substring(0, 8);
   let userid = id.substring(8);
@@ -111,14 +110,14 @@ exports.friend = functions.https.onRequest(async (request, response) => {
 exports.random = functions.https.onRequest(async (request, response) => {
   let key = functions.config().random.key;
 
-  if (request.body.key !== key) {
-    return response.status(401);
+  if (request.query.key !== key) {
+    return response.status(401).send({ message: 'Failed' });
   }
 
   firestore
     .collection('config')
     .doc('random')
-    .update({
+    .set({
       value: Math.random()
         .toString(36)
         .substr(2, 8)
