@@ -1,66 +1,86 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { Container, Row, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+
+import { firestore } from '../../../../firebase';
+
 import QuestPath from '../QuestPath/';
+import QuestBox from '../QuestBox';
 
 import './QuestList.css';
 
+const enhance = compose(
+  connect(
+    (state) => state,
+    {}
+  )
+);
+
 class Quests extends Component {
-  constructor() {
-    super();
-    this.state = {
-      quest1: 'หาแมว',
-      quest2: 'หาหมา',
-      quest3: 'หาหนู'
-    };
+  state = {
+    quests: [],
+    pass: []
+  };
+
+  componentDidMount() {
+    const {
+      user: {
+        user: { uid }
+      }
+    } = this.props;
+
+    firestore
+      .collection('quest')
+      .get()
+      .then((query) => {
+        let quests = [];
+        query.forEach((doc) => {
+          quests.push({ id: doc.id, ...doc.data() });
+        });
+        this.setState({ quests });
+      });
+
+    firestore
+      .collection('profile')
+      .doc(uid)
+      .collection('quests')
+      .get()
+      .then((query) => {
+        let pass = [];
+        query.forEach((doc) => {
+          pass.push(doc.id);
+        });
+
+        this.setState({ pass });
+      });
   }
 
   render() {
+    let quests = this.state.quests.sort((a, b) => a.id > b.id);
+    let pass = this.state.pass;
+
     return (
       <Fragment>
         <div className="questmain-container">
           <div className="questmain-header">
-            <h1>Quests</h1>
+            <h1>{'Quests'}</h1>
           </div>
           <div className="questpath-container">
-            <QuestPath />
+            <Container>
+              <Row>
+                {quests.map((quest) => {
+                  return <QuestPath key={quest.id} pass={pass.includes(quest.id)} />;
+                })}
+              </Row>
+            </Container>
           </div>
           <Container className="quests-container">
-            <Row>
-              <Col>
-                <div className="main-quest-container">
-                  <div className="quest-detail">
-                    <h4>◆ {this.state.quest1}</h4>
-                  </div>
-                  <div className="quest-expire">
-                    <p>18/06/18</p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="main-quest-container">
-                  <div className="quest-detail">
-                    <h4>◆ {this.state.quest2}</h4>
-                  </div>
-                  <div className="quest-expire">
-                    <p>18/06/18</p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="main-quest-container">
-                  <div className="quest-detail">
-                    <h4>◆ {this.state.quest3}</h4>
-                  </div>
-                  <div className="quest-expire">
-                    <p>18/06/18</p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
+            {quests.map((quest) => {
+              return <QuestBox key={quest.id} name={quest.name} expire={quest.expire} />;
+            })}
           </Container>
         </div>
         <div className="questqr-container">
@@ -69,13 +89,21 @@ class Quests extends Component {
           </Button>
         </div>
         <div className="questbtn-container">
-          <Button color="warning" size="lg">
-            ล่ารายชื่อ
-          </Button>
+          <Link to="/friends/list">
+            <Button color="warning" size="lg">
+              ล่ารายชื่อ
+            </Button>
+          </Link>
         </div>
       </Fragment>
     );
   }
 }
 
-export default Quests;
+Quests.propTypes = {
+  user: PropTypes.shape({
+    user: PropTypes.shape({ uid: PropTypes.string })
+  })
+};
+
+export default enhance(Quests);

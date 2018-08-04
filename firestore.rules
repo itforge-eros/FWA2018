@@ -16,8 +16,23 @@ service cloud.firestore {
       match /friends/{document=**} {
         allow  read, update, create, delete: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
       }
+
+      match /quests/{document=**} {
+        allow  read, update, create, delete: if (request.auth.uid == userId && isSignedIn()) || isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
+      }
     }
     match /config/{document=**} {
+      function isAdmin(resource) {
+          return resource.data.admin;
+      }
+
+
+      allow read: if true;
+      allow update: if isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
+
+    }
+
+    match /quest/{document=**} {
       function isAdmin(resource) {
           return resource.data.admin;
       }
