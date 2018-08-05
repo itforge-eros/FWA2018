@@ -48,7 +48,7 @@ const Namelist = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="quote-container">อย่าลืมไปตามหาพี่ๆเยอะๆนะ~</Col>
+            <Col className="quote-container">ยังหาใครไม่เจอเหรอ ลองไป Common Room ดูสิ เผื่อจะเจอ~</Col>
           </Row>
         </Container>
       </div>
