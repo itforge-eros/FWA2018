@@ -19,7 +19,7 @@ const enhance = compose(
 const MyProfile = (props) => {
   const {
     profile: {
-      info: { nickname, prefix, firstname, lastname, student_id, branch, introduction },
+      info: { nickname, prefix, firstname, lastname, student_id, branch, introduction, year },
       photoURL
     }
   } = props;
@@ -53,25 +53,29 @@ const MyProfile = (props) => {
         <Row>
           <Col className="content-container" />
         </Row>
-        <Row>
-          <Col className="mission-box">
-            <Row>
-              <Col className="mission-head">
-                <h2>เควสที่เสร็จแล้ว</h2>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="quest-status1">
-                <h4>หลัก</h4>
-                <h2 id="number-pass">0</h2>
-              </Col>
-              <Col className="quest-status2">
-                <h4>พิเศษ</h4>
-                <h2 id="number-pass">0</h2>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+        {year === '1' ? (
+          <Row>
+            <Col className="mission-box">
+              <Row>
+                <Col className="mission-head">
+                  <h2>เควสที่เสร็จแล้ว</h2>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="quest-status1">
+                  <h4>หลัก</h4>
+                  <h2 id="number-pass">0</h2>
+                </Col>
+                <Col className="quest-status2">
+                  <h4>พิเศษ</h4>
+                  <h2 id="number-pass">0</h2>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        ) : (
+          ''
+        )}
         {/* <Row>
           <Col className="btn-container">
             <Link to="/profile/edit">
@@ -97,6 +101,7 @@ MyProfile.propTypes = {
       lastname: PropTypes.string,
       student_id: PropTypes.string,
       branch: PropTypes.string,
+      year: PropTypes.string,
       introduction: PropTypes.string
     }),
     photoURL: PropTypes.string

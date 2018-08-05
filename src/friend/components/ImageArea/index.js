@@ -49,7 +49,7 @@ ImageArea.propTypes = {
   friends: PropTypes.shape({
     friends: PropTypes.array,
     loading: PropTypes.bool,
-    selectYear: PropTypes.string
+    selectYear: PropTypes.number
   })
 };
 

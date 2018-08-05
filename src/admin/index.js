@@ -29,6 +29,11 @@ const UserRoute = Loadable({
   loading: AppLoader
 });
 
+const QuestRoute = Loadable({
+  loader: () => import('./components/QuestRoute'),
+  loading: AppLoader
+});
+
 const Admin = (props) => {
   const {
     profile: { create, approve, admin },
@@ -44,6 +49,7 @@ const Admin = (props) => {
       {admin ? '' : <Redirect to="/profile/me" />}
 
       <Route path="/admin/user/" component={UserRoute} />
+      <Route path="/admin/quest/" component={QuestRoute} />
     </Fragment>
   );
 };

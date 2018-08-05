@@ -49,17 +49,17 @@ const NavBar = (props) => {
         <Nav navbar>
           {approve ? (
             <Fragment>
-              <NavItem>
+              <NavItem onClick={() => setCollapse()}>
                 <Link to="/profile/me" className="MainNavBarLink">
                   Profile
                 </Link>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={() => setCollapse()}>
                 <Link to="/friends/list" className="MainNavBarLink">
                   Friends
                 </Link>
               </NavItem>
-              <NavItem>
+              <NavItem onClick={() => setCollapse()}>
                 <Link to="/quests/list" className="MainNavBarLink">
                   Quests
                 </Link>
@@ -68,8 +68,8 @@ const NavBar = (props) => {
           ) : (
             ''
           )}
-          <NavItem>
-            <a onClick={() => logout()} className="MainNavBarLink">
+          <NavItem onClick={() => setCollapse()}>
+            <a onClick={() => logout()} className="MainNavBarLink Logout">
               Logout
             </a>
           </NavItem>
