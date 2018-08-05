@@ -84,9 +84,11 @@ class Quests extends Component {
           </Container>
         </div>
         <div className="questqr-container">
-          <Button color="success" size="lg">
-            เช็คชื่อเควส
-          </Button>
+          <Link to="/code/qscan">
+            <Button color="success" size="lg">
+              เช็คชื่อเควส
+            </Button>
+          </Link>
         </div>
         <div className="questbtn-container">
           <Link to="/friends/list">

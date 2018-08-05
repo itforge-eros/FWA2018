@@ -47,6 +47,9 @@ const Namelist = () => {
               <ImageArea />
             </Col>
           </Row>
+          <Row>
+            <Col className="quote-container">อย่าลืมไปตามหาพี่ๆเยอะๆนะ~</Col>
+          </Row>
         </Container>
       </div>
     </Fragment>

@@ -69,6 +69,10 @@
         "function": "random"
       },
       {
+        "source": "/api/quest",
+        "function": "quest"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
