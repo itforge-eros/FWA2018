@@ -21,7 +21,7 @@ const YearButton = (props) => {
   } = props;
 
   return (
-    <Col className="yearbutton-container">
+    <Col xs={year === 0 ? 4 : 2} className="yearbutton-container">
       <Button color={year === selectYear ? 'success' : 'info'} onClick={() => changeYear(year)}>
         {year === 0 ? 'ทั้งหมด' : `ปี ${year}`}
       </Button>
