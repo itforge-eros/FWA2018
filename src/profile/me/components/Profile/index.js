@@ -38,9 +38,15 @@ const MyProfile = (props) => {
             <h1 id="fullname-main">
               {prefix} {firstname} {lastname}
             </h1>
-            <h6>รหัสนักศึกษา : {student_id}</h6>
-            <h6>สาขา : {branch}</h6>
-            <h6>แนะนำตัวสั้นๆกันหน่อย! :</h6>
+            <h6 className="profile-content">
+              <b>รหัสนักศึกษา</b> : {student_id}
+            </h6>
+            <h6 className="profile-content">
+              <b>สาขา</b> : {branch}
+            </h6>
+            <h6 className="profile-content">
+              <b>แนะนำตัวสั้นๆกันหน่อย!</b> :
+            </h6>
             <h6 id="intro">{introduction}</h6>
           </Col>
         </Row>
