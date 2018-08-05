@@ -28,7 +28,7 @@ const enhance = compose(
 
 const ImageArea = (props) => {
   const {
-    friends: { friends, loading }
+    friends: { friends, loading, selectYear }
   } = props;
   return (
     <Container>
@@ -37,7 +37,7 @@ const ImageArea = (props) => {
           <div className="ImageArea-loading">Loading Friends...</div>
         ) : (
           friends.map((friend) => {
-            return <ImageBox id={friend} key={friend} />;
+            return parseInt(friend.profile.info.year, 10) === selectYear ? <ImageBox data={friend} key={friend} /> : '';
           })
         )}
       </Row>
@@ -48,7 +48,8 @@ const ImageArea = (props) => {
 ImageArea.propTypes = {
   friends: PropTypes.shape({
     friends: PropTypes.array,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    selectYear: PropTypes.string
   })
 };
 

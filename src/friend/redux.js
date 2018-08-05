@@ -55,7 +55,7 @@ export const getFriends = (uid) => {
       .then((result) => {
         let friends = [];
         result.forEach(async (friend) => {
-          friends.push(friend.id);
+          friends.push({ id: friend.id, ...friend.data() });
         });
         return friends;
       })

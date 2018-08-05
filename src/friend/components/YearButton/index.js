@@ -22,7 +22,7 @@ const YearButton = (props) => {
 
   return (
     <Col xs="3" className="yearbutton-container">
-      <Button color={year === selectYear ? 'success' : 'warning'} onClick={() => changeYear(year)}>
+      <Button color={year === selectYear ? 'success' : 'info'} onClick={() => changeYear(year)}>
         ปี {year}
       </Button>
     </Col>

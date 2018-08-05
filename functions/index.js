@@ -63,7 +63,7 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     .get()
     .then((doc) => {
       if (doc.exists) {
-        return true;
+        return doc.data();
       } else {
         return false;
       }
@@ -72,10 +72,13 @@ exports.friend = functions.https.onRequest(async (request, response) => {
       console.error(err);
     });
 
-  if (!profile) return response.status(404).send({
-    error: true,
-    message: 'Profile not found!'
-  });
+  if (!profile)
+    return response.status(404).send({
+      error: true,
+      message: 'Profile not found!'
+    });
+
+  let requester_profile = profile;
 
   // Check destination
   profile = await firestore
@@ -84,7 +87,7 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     .get()
     .then((doc) => {
       if (doc.exists) {
-        return true;
+        return doc.data();
       } else {
         return false;
       }
@@ -93,10 +96,13 @@ exports.friend = functions.https.onRequest(async (request, response) => {
       console.error(err);
     });
 
-  if (!profile) return response.status(404).send({
-    error: true,
-    message: 'Profile not found!'
-  });
+  if (!profile)
+    return response.status(404).send({
+      error: true,
+      message: 'Profile not found!'
+    });
+
+  let destination_profile = profile;
 
   // New date now
   let add = Date.now();
@@ -108,7 +114,8 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     .collection('friends')
     .doc(userid)
     .set({
-      add
+      add,
+      profile: destination_profile
     });
 
   // Add to requester destination profile
@@ -118,7 +125,8 @@ exports.friend = functions.https.onRequest(async (request, response) => {
     .collection('friends')
     .doc(requester)
     .set({
-      add
+      add,
+      profile: requester_profile
     });
   return response.status(200).send({
     error: false,
@@ -164,7 +172,7 @@ exports.quest = functions.https.onRequest(async (request, response) => {
   }
   let userkey = id.substring(0, 8);
   let questid = id.substring(8);
-  let requester = request.body.requester
+  let requester = request.body.requester;
 
   // Get current key
   let key = await firestore
@@ -192,23 +200,24 @@ exports.quest = functions.https.onRequest(async (request, response) => {
       if (doc.exists) {
         return doc.data();
       } else {
-        return {}
+        return {};
       }
     })
     .catch((err) => {
       console.error(err);
     });
 
-  if (!quest) return response.status(200).send({
-    error: true,
-    message: 'Profile not found!'
-  });
+  if (!quest)
+    return response.status(200).send({
+      error: true,
+      message: 'Profile not found!'
+    });
 
-
-  if (!quest.open) return response.status(200).send({
-    error: true,
-    message: 'Quest not open!'
-  });
+  if (!quest.open)
+    return response.status(200).send({
+      error: true,
+      message: 'Quest not open!'
+    });
 
   // New date now
   let add = Date.now();
@@ -227,6 +236,4 @@ exports.quest = functions.https.onRequest(async (request, response) => {
     error: false,
     message: 'Check-in completed!'
   });
-
-
 });
