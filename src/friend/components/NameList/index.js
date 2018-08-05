@@ -37,6 +37,7 @@ const Namelist = () => {
         </div>
         <Container>
           <Row>
+            <YearButton year={0} />
             <YearButton year={1} />
             <YearButton year={2} />
             <YearButton year={3} />

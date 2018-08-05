@@ -9,7 +9,7 @@ const GET_PROFILE_PENDING = `${GET_PROFILE}_PENDING`;
 const GET_PROFILE_FULFILLED = `${GET_PROFILE}_FULFILLED`;
 
 const initialState = {
-  selectYear: 1,
+  selectYear: 0,
   loading: false,
   friends: [],
   profile: {}

@@ -32,12 +32,16 @@ const ImageArea = (props) => {
   } = props;
   return (
     <Container>
-      <Row>
+      <Row className="ImageArea-container">
         {loading ? (
           <div className="ImageArea-loading">Loading Friends...</div>
         ) : (
           friends.map((friend) => {
-            return parseInt(friend.profile.info.year, 10) === selectYear ? <ImageBox data={friend} key={friend} /> : '';
+            return parseInt(friend.profile.info.year, 10) === selectYear || selectYear === 0 ? (
+              <ImageBox data={friend} key={friend} />
+            ) : (
+              ''
+            );
           })
         )}
       </Row>
