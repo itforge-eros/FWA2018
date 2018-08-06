@@ -39,27 +39,29 @@ const NavBar = (props) => {
     });
   };
 
+  let width = window.innerHeight < 992;
+
   return (
     <Navbar dark fixed="top" className="MainNavBar" expand="md">
       <Link to="/profile/me" className="mr-auto MainNavBarBrand">
         Freshy IT 2018
       </Link>
-      <NavbarToggler onClick={() => setCollapse()} className="mr-2" />
+      <NavbarToggler onClick={width ? () => setCollapse() : () => {}} className="mr-2" />
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
           {approve ? (
             <Fragment>
-              <NavItem onClick={() => setCollapse()}>
+              <NavItem onClick={width ? () => setCollapse() : () => {}}>
                 <Link to="/profile/me" className="MainNavBarLink">
                   Profile
                 </Link>
               </NavItem>
-              <NavItem onClick={() => setCollapse()}>
+              <NavItem onClick={width ? () => setCollapse() : () => {}}>
                 <Link to="/friends/list" className="MainNavBarLink">
                   Friends
                 </Link>
               </NavItem>
-              <NavItem onClick={() => setCollapse()}>
+              <NavItem onClick={width ? () => setCollapse() : () => {}}>
                 <Link to="/quests/list" className="MainNavBarLink">
                   Quests
                 </Link>
@@ -68,7 +70,7 @@ const NavBar = (props) => {
           ) : (
             ''
           )}
-          <NavItem onClick={() => setCollapse()}>
+          <NavItem onClick={width ? () => setCollapse() : () => {}}>
             <a onClick={() => logout()} className="MainNavBarLink Logout">
               Logout
             </a>
