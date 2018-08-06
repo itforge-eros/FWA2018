@@ -37,9 +37,8 @@ service cloud.firestore {
           return resource.data.admin;
       }
 
-
       allow read: if true;
-      allow update: if isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
+      allow update, delete, create: if isAdmin(get(/databases/$(database)/documents/profile/$(request.auth.uid)));
 
     }
   }

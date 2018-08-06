@@ -26,12 +26,18 @@ const QuestDetail = Loadable({
   loading: AppLoader
 });
 
+const QuestParticipant = Loadable({
+  loader: () => import('../QuestParticipant'),
+  loading: AppLoader
+});
+
 const UserRoute = () => {
   return (
     <Fragment>
       <Route path="/admin/quest/list" component={QuestList} />
       <Route path="/admin/quest/detail/:id" component={QuestDetail} />
       <Route path="/admin/quest/code/:id" component={QuestQR} />
+      <Route path="/admin/quest/participant/:id" component={QuestParticipant} />
     </Fragment>
   );
 };

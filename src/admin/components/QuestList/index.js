@@ -78,6 +78,11 @@ class UserList extends Component {
                       <Button color="success" size="sm">
                         Check-in QR
                       </Button>
+                    </Link>{' '}
+                    <Link to={`/admin/quest/participant/${quest.id}`}>
+                      <Button color="warning" size="sm">
+                        Participants
+                      </Button>
                     </Link>
                   </td>
                 </tr>
