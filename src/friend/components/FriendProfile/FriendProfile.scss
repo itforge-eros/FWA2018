@@ -1,0 +1,75 @@
+.profilemain-container {
+  background: #a2d5ff;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 1em;
+  border-radius: 15px;
+  box-shadow: 0px 10px #5faff0;
+  font-family: 'Kanit', cursive;
+}
+
+.profilemain-header {
+  background-color: #00578a;
+  padding: 0.1px;
+  color: #f7f7f7;
+  text-align: center;
+  box-shadow: 0px 10px #83c3f7;
+  border-radius: 15px;
+  font-family: 'Press Start 2P', cursive;
+  padding-top: 0.5em;
+}
+
+.profilepicture-header {
+  margin-top: 1.7em;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.information {
+  margin: 20px;
+  display: inline;
+}
+
+#nickname-main {
+  font-size: 42px;
+  margin-top: 28px;
+  color: #292929;
+  font-family: 'Kanit', cursive;
+}
+
+#fullname-main {
+  font-size: 16px;
+  margin-top: -2px;
+  color: #292929;
+  font-family: 'Kanit', cursive;
+}
+
+.profileheader-container {
+  padding-left: 2em;
+}
+
+.btn-container Button {
+  width: 100%;
+  font-family: 'Kanit', cursive;
+}
+
+.btn-container {
+  margin-top: 2em;
+}
+
+.profile-content {
+  b {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}
+
+.FriendProfile-Loading {
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  font-size: 2em;
+  font-family: 'Kanit', cursive;
+}

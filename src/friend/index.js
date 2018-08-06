@@ -29,6 +29,11 @@ const NameList = Loadable({
   loading: AppLoader
 });
 
+const FriendProfile = Loadable({
+  loader: () => import('./components/FriendProfile'),
+  loading: AppLoader
+});
+
 const Friends = (props) => {
   const {
     profile: { create, approve },
@@ -43,6 +48,7 @@ const Friends = (props) => {
       {create && !approve && pathname !== '/pending' ? <Redirect to="/pending" /> : ''}
 
       <Route path="/friends/list" component={NameList} />
+      <Route path="/friends/detail/:id" component={FriendProfile} />
     </Fragment>
   );
 };

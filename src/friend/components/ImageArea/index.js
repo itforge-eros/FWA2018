@@ -34,7 +34,7 @@ const ImageArea = (props) => {
     <Container>
       <Row className="ImageArea-container">
         {loading ? (
-          <div>Loading Friends...</div>
+          <div className="ImageArea-loading">Loading Friends...</div>
         ) : (
           friends.map((friend) => {
             return parseInt(friend.profile.info.year, 10) === selectYear || selectYear === 0 ? (
