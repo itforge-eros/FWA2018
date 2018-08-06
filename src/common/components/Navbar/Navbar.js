@@ -39,7 +39,7 @@ const NavBar = (props) => {
     });
   };
 
-  let width = window.innerHeight < 992;
+  let width = window.innerWidth < 768;
 
   return (
     <Navbar dark fixed="top" className="MainNavBar" expand="md">
