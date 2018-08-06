@@ -30,8 +30,8 @@ const MyProfile = (props) => {
       </div>
       <Container>
         <Row>
-          <Col lg="2" md="4" className="profilepicture-header">
-            <img alt="Profile" src={`${photoURL}?width=100`} />
+          <Col lg="2" md="4">
+            <img alt="Profile" className="profilepicture-header" src={`${photoURL}?width=250`} />
           </Col>
           <Col lg="10" md="8" className="profileheader-container">
             <h1 id="nickname-main">{nickname}</h1>
