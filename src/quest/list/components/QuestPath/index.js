@@ -10,7 +10,7 @@ import './QuestPath.css';
 const QuestPath = (props) => {
   const { pass } = props;
   return (
-    <Col xs="6" md="3">
+    <Col xs="6" md="4">
       <div className="queststatus-container">
         <img alt="Quest" src={pass ? Pass : Lock} />
       </div>

@@ -1,0 +1,23 @@
+.UserList {
+  background-color: #fff;
+  th,
+  td {
+    vertical-align: middle;
+    font-family: 'Kanit', cursive;
+    font-size: 1.2em;
+  }
+  button {
+    font-size: 1em;
+  }
+}
+
+.UserList-col {
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.UserList-btn {
+  font-family: 'Kanit', cursive;
+  font-size: 1.2em;
+  padding: 0.2em 1em;
+}

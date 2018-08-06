@@ -22,7 +22,8 @@ const enhance = compose(
 class Quests extends Component {
   state = {
     quests: [],
-    pass: []
+    pass: [],
+    open: 0
   };
 
   componentDidMount() {
@@ -37,10 +38,14 @@ class Quests extends Component {
       .get()
       .then((query) => {
         let quests = [];
+        let open = 0;
         query.forEach((doc) => {
           quests.push({ id: doc.id, ...doc.data() });
+          if (!doc.data().hidden) {
+            open += 1;
+          }
         });
-        this.setState({ quests });
+        this.setState({ quests, open });
       });
 
     firestore
@@ -61,6 +66,7 @@ class Quests extends Component {
   render() {
     let quests = this.state.quests.sort((a, b) => a.id > b.id);
     let pass = this.state.pass;
+    let open = this.state.open;
 
     return (
       <Fragment>
@@ -72,15 +78,16 @@ class Quests extends Component {
             <Container>
               <Row>
                 {quests.map((quest) => {
-                  return <QuestPath key={quest.id} pass={pass.includes(quest.id)} />;
+                  return !quest.hidden ? <QuestPath key={quest.id} pass={pass.includes(quest.id)} /> : '';
                 })}
               </Row>
             </Container>
           </div>
           <Container className="quests-container">
             {quests.map((quest) => {
-              return <QuestBox key={quest.id} name={quest.name} expire={quest.expire} />;
+              return !quest.hidden ? <QuestBox key={quest.id} name={quest.name} expire={quest.expire} /> : '';
             })}
+            {open === 0 ? <div className="QuestComing">Comming soon...</div> : ''}
           </Container>
         </div>
         <div className="questqr-container">
