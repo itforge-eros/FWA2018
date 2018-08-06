@@ -16,7 +16,12 @@ const QuestList = Loadable({
   loading: AppLoader
 });
 
-const UserDetail = Loadable({
+const QuestQR = Loadable({
+  loader: () => import('../QuestQRCode'),
+  loading: AppLoader
+});
+
+const QuestDetail = Loadable({
   loader: () => import('../UserDetail'),
   loading: AppLoader
 });
@@ -25,7 +30,8 @@ const UserRoute = () => {
   return (
     <Fragment>
       <Route path="/admin/quest/list" component={QuestList} />
-      <Route path="/admin/quest/detail/:id" component={UserDetail} />
+      <Route path="/admin/quest/detail/:id" component={QuestDetail} />
+      <Route path="/admin/quest/code/:id" component={QuestQR} />
     </Fragment>
   );
 };

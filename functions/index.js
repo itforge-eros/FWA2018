@@ -232,6 +232,33 @@ exports.quest = functions.https.onRequest(async (request, response) => {
       add
     });
 
+  // Get Participant Profile
+  let profile = await firestore
+    .collection('profile')
+    .doc(requester)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        return false;
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  // Add participant
+  await firestore
+    .collection('quest')
+    .doc(questid)
+    .collection('participant')
+    .doc(requester)
+    .set({
+      add,
+      profile
+    });
+
   return response.status(200).send({
     error: false,
     message: 'Check-in completed!'

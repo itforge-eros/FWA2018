@@ -56,6 +56,7 @@ class UserList extends Component {
               <th>Quest ID</th>
               <th>Quest Name</th>
               <th>Quest Open</th>
+              <th>Quest Hide</th>
               <th />
             </tr>
           </thead>
@@ -66,10 +67,16 @@ class UserList extends Component {
                   <td>{quest.id}</td>
                   <td>{quest.name}</td>
                   <td>{quest.open ? 'Yes' : 'No'}</td>
+                  <td>{quest.hidden ? 'Yes' : 'No'}</td>
                   <td>
                     <Link to={`/admin/quest/detail/${quest.id}`}>
                       <Button color="primary" size="sm">
                         View / Edit
+                      </Button>
+                    </Link>{' '}
+                    <Link to={`/admin/quest/code/${quest.id}`}>
+                      <Button color="success" size="sm">
+                        Check-in QR
                       </Button>
                     </Link>
                   </td>
