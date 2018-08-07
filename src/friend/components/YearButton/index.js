@@ -4,25 +4,34 @@ import { Button, Col } from 'reactstrap';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 
-import { changeYear } from '../../redux';
+import { changeYear, getFriends } from '../../redux';
 
 const enhance = compose(
   connect(
     (state) => state,
-    { changeYear }
+    { changeYear, getFriends }
   )
 );
 
 const YearButton = (props) => {
   const {
     changeYear,
+    getFriends,
     year,
-    friends: { selectYear }
+    friends: { selectYear },
+    user: {
+      user: { uid }
+    }
   } = props;
+
+  const yearChange = (year) => {
+    changeYear(year);
+    getFriends(uid);
+  };
 
   return (
     <Col xs={year === 0 ? 4 : 2} className="yearbutton-container">
-      <Button color={year === selectYear ? 'success' : 'info'} onClick={() => changeYear(year)}>
+      <Button color={year === selectYear ? 'success' : 'info'} onClick={() => yearChange(year)}>
         {year === 0 ? 'ทั้งหมด' : `ปี ${year}`}
       </Button>
     </Col>
@@ -31,9 +40,15 @@ const YearButton = (props) => {
 
 YearButton.propTypes = {
   changeYear: PropTypes.func,
+  getFriends: PropTypes.func,
   year: PropTypes.number,
   friends: PropTypes.shape({
     selectYear: PropTypes.number
+  }),
+  user: PropTypes.shape({
+    user: PropTypes.shape({
+      uid: PropTypes.string
+    })
   })
 };
 
