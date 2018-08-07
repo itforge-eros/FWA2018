@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
 
-import { setLogin, setLogout } from '../../redux';
+import { setLogin, setLogout, setLoading } from '../../redux';
 import { setProfile } from '../../../profile/redux';
 
 import Button from 'reactstrap/lib/Button';
@@ -16,7 +16,7 @@ import { auth, provider } from '../../../firebase';
 const enhance = compose(
   connect(
     (state) => state,
-    { setLogin, setLogout, setProfile }
+    { setLogin, setLogout, setProfile, setLoading }
   ),
   lifecycle({
     componentDidMount() {
@@ -24,6 +24,7 @@ const enhance = compose(
         if (user) {
           this.props.setLogin(user);
           this.props.setProfile(user);
+          this.props.setLoading(false);
         }
       });
     }
@@ -31,7 +32,13 @@ const enhance = compose(
 );
 
 const LoginButton = (props) => {
+  const {
+    user: { loading },
+    setLoading
+  } = props;
+
   const login = () => {
+    setLoading(true);
     auth.signInWithRedirect(provider).then(() => {});
   };
 
@@ -41,7 +48,9 @@ const LoginButton = (props) => {
     });
   };
 
-  return (
+  return loading ? (
+    <div className="AppLoader">Logging in...</div>
+  ) : (
     <Button color="primary" size="lg" onClick={props.user.login ? () => logout() : () => login()}>
       <FontAwesomeIcon icon={faFacebook} /> Facebook Login
     </Button>
@@ -50,8 +59,10 @@ const LoginButton = (props) => {
 
 LoginButton.propTypes = {
   user: PropTypes.shape({
-    login: PropTypes.boolean
-  })
+    login: PropTypes.boolean,
+    loading: PropTypes.boolean
+  }),
+  setLoading: PropTypes.func
 };
 
 export default enhance(LoginButton);
