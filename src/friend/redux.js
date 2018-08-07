@@ -7,12 +7,20 @@ const GET_FRIEND_FULFILLED = `${GET_FRIEND}_FULFILLED`;
 const GET_PROFILE = 'GET_PROFILE';
 const GET_PROFILE_PENDING = `${GET_PROFILE}_PENDING`;
 const GET_PROFILE_FULFILLED = `${GET_PROFILE}_FULFILLED`;
+const SET_FRIEND_TOTAL = 'SET_FRIEND_TOTAL';
 
 const initialState = {
   selectYear: 0,
   loading: false,
   friends: [],
-  profile: {}
+  profile: {},
+  total: {
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0
+  }
 };
 
 const action = (state = initialState, action) => {
@@ -31,6 +39,9 @@ const action = (state = initialState, action) => {
 
     case GET_PROFILE_FULFILLED:
       return { ...state, loading: false, profile: { ...state.profile, ...action.payload } };
+
+    case SET_FRIEND_TOTAL:
+      return { ...state, total: action.data };
 
     default:
       return state;
@@ -69,4 +80,9 @@ export const getProfile = (uid) => ({
     .doc(uid)
     .get()
     .then((result) => ({ [uid]: { ...result.data().info, photoURL: result.data().photoURL } }))
+});
+
+export const setTotal = (data) => ({
+  type: SET_FRIEND_TOTAL,
+  data
 });

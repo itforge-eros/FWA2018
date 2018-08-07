@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col } from 'reactstrap';
@@ -21,7 +22,10 @@ const enhance = compose(
   )
 );
 
-const Namelist = () => {
+const Namelist = (props) => {
+  const {
+    friends: { loading, total }
+  } = props;
   return (
     <Fragment>
       <div className="qrbutton-container">
@@ -49,12 +53,28 @@ const Namelist = () => {
             </Col>
           </Row>
           <Row>
+            {loading ? (
+              ''
+            ) : (
+              <Col className="counter-container">
+                ทั้งหมด {total[0]} คน ปี 1: {total[1]} คน, ปี 2: {total[2]} คน, ปี 3: {total[3]} คน, ปี 4: {total[4]} คน
+              </Col>
+            )}
+          </Row>
+          <Row>
             <Col className="quote-container">ยังหาใครไม่เจอเหรอ ลองไป Common Room ดูสิ เผื่อจะเจอ~</Col>
           </Row>
         </Container>
       </div>
     </Fragment>
   );
+};
+
+Namelist.propTypes = {
+  friends: PropTypes.shape({
+    loading: PropTypes.bool,
+    total: PropTypes.object
+  })
 };
 
 export default enhance(Namelist);
