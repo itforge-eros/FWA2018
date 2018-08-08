@@ -20,11 +20,19 @@ const enhance = compose(
   ),
   lifecycle({
     componentDidMount() {
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          this.props.setLogin(user);
+      auth.getRedirectResult().then((user) => {
+        if (user.user) {
+          this.props.setLogin(user.user);
           this.props.setProfile(user);
           this.props.setLoading(false);
+        } else {
+          auth.onAuthStateChanged((user) => {
+            if (user) {
+              this.props.setLogin(user);
+              this.props.setProfile(user);
+              this.props.setLoading(false);
+            }
+          });
         }
       });
     }
@@ -39,7 +47,7 @@ const LoginButton = (props) => {
 
   const login = () => {
     setLoading(true);
-    auth.signInWithRedirect(provider).then(() => {});
+    auth.signInWithRedirect(provider);
   };
 
   const logout = () => {
