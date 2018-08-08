@@ -51,7 +51,7 @@ class Quests extends Component {
     firestore
       .collection('profile')
       .doc(uid)
-      .collection('quests')
+      .collection('quest')
       .get()
       .then((query) => {
         let pass = [];
@@ -67,6 +67,9 @@ class Quests extends Component {
     let quests = this.state.quests.sort((a, b) => a.id > b.id);
     let pass = this.state.pass;
     let open = this.state.open;
+
+    console.log(pass);
+    console.log(quests);
 
     return (
       <Fragment>
