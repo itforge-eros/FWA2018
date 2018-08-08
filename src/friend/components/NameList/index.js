@@ -24,19 +24,8 @@ const enhance = compose(
 
 const Namelist = (props) => {
   const {
-    friends: { loading, total },
-    setTotal
+    friends: { loading, total }
   } = props;
-
-  if (typeof total[0] === 'undefined') {
-    setTotal({
-      0: 0,
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0
-    });
-  }
 
   return (
     <Fragment>
