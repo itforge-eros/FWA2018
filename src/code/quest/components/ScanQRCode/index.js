@@ -30,7 +30,7 @@ const ScanQRCode = (props) => {
     },
     code: {
       loading,
-      friend: { message }
+      quest: { message }
     },
     checkinQuest
   } = props;

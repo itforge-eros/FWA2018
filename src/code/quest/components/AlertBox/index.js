@@ -5,7 +5,7 @@ import { compose, lifecycle } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { resetError } from '../../../redux';
+import { resetQuestError } from '../../../redux';
 
 import './AlertBox.css';
 
@@ -13,7 +13,7 @@ const enhance = compose(
   withRouter,
   connect(
     (state) => state,
-    { resetError }
+    { resetQuestError }
   ),
   lifecycle({})
 );
@@ -21,13 +21,13 @@ const enhance = compose(
 const AlertBox = (props) => {
   const {
     code: {
-      friend: { error, message }
+      quest: { error, message }
     },
-    resetError
+    resetQuestError
   } = props;
 
   return (
-    <Alert className="alert-box" color={error ? 'danger' : 'success'} toggle={() => resetError()}>
+    <Alert className="alert-box" color={error ? 'danger' : 'success'} toggle={() => resetQuestError()}>
       {message}
     </Alert>
   );
@@ -40,7 +40,7 @@ AlertBox.propTypes = {
       message: PropTypes.string
     })
   }),
-  resetError: PropTypes.func
+  resetQuestError: PropTypes.func
 };
 
 export default enhance(AlertBox);
