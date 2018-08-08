@@ -68,9 +68,6 @@ class Quests extends Component {
     let pass = this.state.pass;
     let open = this.state.open;
 
-    console.log(pass);
-    console.log(quests);
-
     return (
       <Fragment>
         <div className="questmain-container">
@@ -88,9 +85,13 @@ class Quests extends Component {
           </div>
           <Container className="quests-container">
             {quests.map((quest) => {
-              return !quest.hidden ? <QuestBox key={quest.id} name={quest.name} expire={quest.expire} /> : '';
+              return !quest.hidden ? (
+                <QuestBox key={quest.id} name={quest.name} expire={quest.expire} pass={pass.includes(quest.id)} />
+              ) : (
+                ''
+              );
             })}
-            {open === 0 ? <div className="QuestComing">Coming soon...</div> : ''}
+            {open === 0 ? <div className="QuestComing">Loading...</div> : ''}
           </Container>
         </div>
         <div className="questqr-container">

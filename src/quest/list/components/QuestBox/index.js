@@ -8,11 +8,11 @@ class QuestBox extends Component {
   componentDidMount() {}
 
   render() {
-    const { name, expire } = this.props;
+    const { name, expire, pass } = this.props;
     return (
       <Row>
         <Col>
-          <div className="main-quest-container">
+          <div className={`main-quest-container ${pass ? 'quest-green' : ''}`}>
             <div className="quest-detail">
               <h4>◆ {name}</h4>
             </div>
@@ -28,7 +28,8 @@ class QuestBox extends Component {
 
 QuestBox.propTypes = {
   name: PropTypes.string,
-  expire: PropTypes.string
+  expire: PropTypes.string,
+  pass: PropTypes.bool
 };
 
 export default QuestBox;
