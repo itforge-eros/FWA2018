@@ -41,19 +41,8 @@ const enhance = compose(
 
 const ImageArea = (props) => {
   const {
-    friends: { friends, loading, selectYear, total },
-    setTotal
+    friends: { friends, loading, selectYear }
   } = props;
-
-  if (typeof total[0] === 'undefined') {
-    setTotal({
-      0: 0,
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0
-    });
-  }
 
   return (
     <Container>
@@ -80,10 +69,8 @@ ImageArea.propTypes = {
   friends: PropTypes.shape({
     friends: PropTypes.array,
     loading: PropTypes.bool,
-    selectYear: PropTypes.number,
-    total: PropTypes.object
-  }),
-  setTotal: PropTypes.func
+    selectYear: PropTypes.number
+  })
 };
 
 export default enhance(ImageArea);

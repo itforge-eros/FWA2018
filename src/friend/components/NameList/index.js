@@ -13,19 +13,31 @@ import './NameList.css';
 import ImageArea from '../ImageArea';
 import YearButton from '../YearButton';
 
-import { changeYear } from '../../redux';
+import { changeYear, setTotal } from '../../redux';
 
 const enhance = compose(
   connect(
     (state) => state,
-    { changeYear }
+    { changeYear, setTotal }
   )
 );
 
 const Namelist = (props) => {
   const {
-    friends: { loading, total }
+    friends: { loading, total },
+    setTotal
   } = props;
+
+  if (typeof total[0] === 'undefined') {
+    setTotal({
+      0: 0,
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0
+    });
+  }
+
   return (
     <Fragment>
       <div className="qrbutton-container">
@@ -74,7 +86,8 @@ Namelist.propTypes = {
   friends: PropTypes.shape({
     loading: PropTypes.bool,
     total: PropTypes.object
-  })
+  }),
+  setTotal: PropTypes.object
 };
 
 export default enhance(Namelist);
