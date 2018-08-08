@@ -64,15 +64,20 @@ const Namelist = (props) => {
               <ImageArea />
             </Col>
           </Row>
-          <Row>
-            {loading ? (
-              ''
-            ) : (
-              <Col className="counter-container">
-                ทั้งหมด {total[0]} คน ปี 1: {total[1]} คน, ปี 2: {total[2]} คน, ปี 3: {total[3]} คน, ปี 4: {total[4]} คน
-              </Col>
-            )}
-          </Row>
+          {typeof total === 'undefined' ? (
+            ''
+          ) : (
+            <Row>
+              {loading ? (
+                ''
+              ) : (
+                <Col className="counter-container">
+                  ทั้งหมด {total[0]} คน ปี 1: {total[1]} คน, ปี 2: {total[2]} คน, ปี 3: {total[3]} คน, ปี 4: {total[4]}{' '}
+                  คน
+                </Col>
+              )}
+            </Row>
+          )}
           <Row>
             <Col className="quote-container">ยังหาใครไม่เจอเหรอ ลองไป Common Room ดูสิ เผื่อจะเจอ~</Col>
           </Row>
