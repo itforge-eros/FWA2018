@@ -45,7 +45,7 @@ const ImageArea = (props) => {
     setTotal
   } = props;
 
-  if (typeof total[0] === undefined) {
+  if (typeof total[0] === 'undefined') {
     setTotal({
       0: 0,
       1: 0,
