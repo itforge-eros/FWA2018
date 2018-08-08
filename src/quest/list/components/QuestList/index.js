@@ -87,7 +87,7 @@ class Quests extends Component {
             {quests.map((quest) => {
               return !quest.hidden ? <QuestBox key={quest.id} name={quest.name} expire={quest.expire} /> : '';
             })}
-            {open === 0 ? <div className="QuestComing">Comming soon...</div> : ''}
+            {open === 0 ? <div className="QuestComing">Coming soon...</div> : ''}
           </Container>
         </div>
         <div className="questqr-container">

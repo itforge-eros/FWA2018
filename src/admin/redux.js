@@ -11,12 +11,15 @@ const ADMIN_SET_FORM_DEFAULT_FULFILLED = `${ADMIN_SET_FORM_DEFAULT}_FULFILLED`;
 const ADMIN_EDIT_PROFILE = 'ADMIN_EDIT_PROFILE';
 const ADMIN_EDIT_PROFILE_PENDING = `${ADMIN_EDIT_PROFILE}_PENDING`;
 const ADMIN_EDIT_PROFILE_FULFILLED = `${ADMIN_EDIT_PROFILE}_FULFILLED`;
+const ADMIN_SET_QUEST_FORM = 'ADMIN_SET_QUEST_FORM';
+const ADMIN_EDIT_QUEST_FORM = 'ADMIN_EDIT_QUEST_FORM';
+const ADMIN_SET_LOADING = 'ADMIN_SET_LOADING';
 
 const initialState = {
   create: false,
   admin: false,
   approve: false,
-  loading: false,
+  loading: true,
   displayName: '',
   photoURL: '',
   info: {
@@ -40,6 +43,12 @@ const initialState = {
     introduction: '',
     student_id: '',
     year: '1'
+  },
+  quest: {
+    name: '',
+    open: false,
+    expire: '',
+    hidden: false
   }
 };
 
@@ -77,6 +86,24 @@ const action = (state = initialState, action) => {
 
     case ADMIN_EDIT_PROFILE_FULFILLED:
       return { ...state, loading: false, info: action.payload };
+
+    case ADMIN_SET_QUEST_FORM:
+      return { ...state, quest: { ...action.data }, loading: false };
+
+    case ADMIN_EDIT_QUEST_FORM:
+      return {
+        ...state,
+        quest: {
+          ...state.quest,
+          [action.key]: action.value
+        }
+      };
+
+    case ADMIN_SET_LOADING:
+      return {
+        ...state,
+        loading: action.value
+      };
 
     default:
       return state;
@@ -123,4 +150,20 @@ export const editProfile = (uid) => ({
       alert('Edit successful!');
       return store.getState().admin.form;
     })
+});
+
+export const setQuestForm = (data) => ({
+  type: ADMIN_SET_QUEST_FORM,
+  data
+});
+
+export const editQuestForm = (key, value) => ({
+  type: ADMIN_EDIT_QUEST_FORM,
+  key,
+  value
+});
+
+export const setLoading = (value) => ({
+  type: ADMIN_SET_LOADING,
+  value
 });

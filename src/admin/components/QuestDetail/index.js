@@ -7,112 +7,108 @@ import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import './QuestDetail.css';
+import { firestore } from '../../../firebase';
 
-import { setForm, setFormDefault, editProfile } from '../../redux';
+import { setQuestForm, editQuestForm, setLoading } from '../../redux';
+
+import './QuestDetail.css';
 
 const enhance = compose(
   connect(
     (state) => state,
-    { setForm, setFormDefault, editProfile }
+    { setQuestForm, editQuestForm, setLoading }
   ),
   lifecycle({
     componentWillMount() {
-      this.props.setFormDefault(this.props.match.params.id);
+      const {
+        match: {
+          params: { id }
+        }
+      } = this.props;
+
+      firestore
+        .collection('quest')
+        .doc(id)
+        .get()
+        .then((doc) => {
+          this.props.setQuestForm({ ...doc.data() });
+        });
     }
   })
 );
 
-const UserDetail = (props) => {
+const keyEnterPress = (e) => {
+  if (e.keyCode === 13 && e.shiftKey === false) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+};
+
+const updateQuest = (id, value, setLoading) => {
+  setLoading(true);
+  firestore
+    .collection('quest')
+    .doc(id)
+    .set({
+      ...value,
+      open: value.open === 'true',
+      hidden: value.hidden === 'true'
+    })
+    .then(() => {
+      setLoading(false);
+    });
+};
+
+const QuestDetail = (props) => {
   const {
-    setForm,
-    editProfile,
     admin: {
       loading,
-      displayName,
-      form: { nickname, prefix, firstname, lastname, student_id, branch, address, introduction, year }
+      quest: { name, hidden, expire, open }
     },
     match: {
       params: { id }
-    }
+    },
+    editQuestForm,
+    setLoading
   } = props;
-
-  const keyEnterPress = (e) => {
-    if (e.keyCode === 13 && e.shiftKey === false) {
-      e.preventDefault();
-      e.stopPropagation();
-      editProfile(id);
-    }
-  };
 
   return loading ? (
     <div className="AppLoader">Loading...</div>
   ) : (
     <div className="UserDetail-container">
       <div className="UserDetail-header">
-        <h3>Edit Profile</h3>
+        <h3>Edit Quest</h3>
       </div>
       <Form onKeyDown={(e) => keyEnterPress(e)}>
         <FormGroup className="UserDetailForm">
-          <Label>ชื่อ Facebook</Label>
-          <Input value={displayName} disabled />
+          <Label>Quest Name</Label>
+          <Input name="name" onChange={(e) => editQuestForm('name', e.target.value)} value={name} />
         </FormGroup>
         <FormGroup className="UserDetailForm">
-          <Label>ชื่อเล่น</Label>
-          <Input onChange={(e) => setForm('nickname', e.target.value)} value={nickname} />
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
-          <Label>คำนำหน้า</Label>
-          <Input type="select" onChange={(e) => setForm('prefix', e.target.value)} value={prefix}>
-            <option value="นาย">นาย</option>
-            <option value="นางสาว">นางสาว</option>
-            <option value="นาง">นาง</option>
+          <Label>Hidden</Label>
+          <Input name="hidden" type="select" onChange={(e) => editQuestForm('hidden', e.target.value)} value={hidden}>
+            <option value={true}>เปิด</option>
+            <option value={false}>ปิด</option>
           </Input>
         </FormGroup>
         <FormGroup className="UserDetailForm">
-          <Label>ชื่อจริง</Label>
-          <Input onChange={(e) => setForm('firstname', e.target.value)} value={firstname} />
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
-          <Label>นามสกุล</Label>
-          <Input onChange={(e) => setForm('lastname', e.target.value)} value={lastname} />
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
-          <Label>เลขประจำตัวนักศึกษา</Label>
-          <Input onChange={(e) => setForm('student_id', e.target.value)} value={student_id} />
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
-          <Label>สาขา</Label>
-          <Input type="select" onChange={(e) => setForm('branch', e.target.value)} value={branch}>
-            <option value="IT">IT</option>
-            <option value="DSBA">DSBA</option>
-            <option value="BIT">BIT</option>
+          <Label>Open</Label>
+          <Input name="open" type="select" onChange={(e) => editQuestForm('open', e.target.value)} value={open}>
+            <option value={true}>เปิด</option>
+            <option value={false}>ปิด</option>
           </Input>
         </FormGroup>
         <FormGroup className="UserDetailForm">
-          <Label>ชั้นปี</Label>
-          <Input type="select" onChange={(e) => setForm('year', e.target.value)} value={year}>
-            <option value="1">ปี 1</option>
-            <option value="2">ปี 2</option>
-            <option value="3">ปี 3</option>
-            <option value="4">ปี 4</option>
-          </Input>
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
-          <Label>ที่อยู่ (เช่น บ้าน, เกกี, วีคอนโด)</Label>
-          <Input onChange={(e) => setForm('address', e.target.value)} value={address} />
-        </FormGroup>
-        <FormGroup className="UserDetailForm">
-          <Label for="introduction">แนะนำตัวสั้นๆกันหน่อย!</Label>
-          <Input name="introduction" onChange={(e) => setForm('introduction', e.target.value)} value={introduction} />
+          <Label>Expire</Label>
+          <Input name="expire" onChange={(e) => editQuestForm('expire', e.target.value)} value={expire} />
         </FormGroup>
         <div className="Submit-btn">
-          <Link to="/admin/user/list">
+          <Link to="/admin/quest/list">
             <Button color="danger">
               <FontAwesomeIcon icon="times" /> ยกเลิก
             </Button>
           </Link>{' '}
-          <Button color="success" onClick={() => editProfile(id)}>
+          <Button color="success" onClick={() => updateQuest(id, props.admin.quest, setLoading)}>
             <FontAwesomeIcon icon="save" /> บันทึก
           </Button>
         </div>
@@ -121,28 +117,19 @@ const UserDetail = (props) => {
   );
 };
 
-UserDetail.propTypes = {
-  setForm: PropTypes.func,
-  setFormDefault: PropTypes.func,
-  editProfile: PropTypes.func,
-  admin: PropTypes.shape({
-    form: PropTypes.shape({
-      nickname: PropTypes.string,
-      prefix: PropTypes.string,
-      firstname: PropTypes.string,
-      lastname: PropTypes.string,
-      student_id: PropTypes.string,
-      branch: PropTypes.string,
-      address: PropTypes.string,
-      introduction: PropTypes.string,
-      year: PropTypes.string
-    })
-  }),
+QuestDetail.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string
     })
-  })
+  }),
+  admin: PropTypes.shape({
+    loading: PropTypes.bool,
+    quest: PropTypes.object
+  }),
+  setQuestForm: PropTypes.func,
+  editQuestForm: PropTypes.func,
+  setLoading: PropTypes.func
 };
 
-export default enhance(UserDetail);
+export default enhance(QuestDetail);

@@ -22,7 +22,7 @@ const QuestQR = Loadable({
 });
 
 const QuestDetail = Loadable({
-  loader: () => import('../UserDetail'),
+  loader: () => import('../QuestDetail'),
   loading: AppLoader
 });
 
