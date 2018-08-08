@@ -37,7 +37,7 @@ class AddFriend extends Component {
   render() {
     const {
       code: {
-        friend: { message }
+        quest: { message }
       }
     } = this.props;
 
@@ -57,7 +57,7 @@ class AddFriend extends Component {
           </Row>
           <Row>
             <Col className="scanbutton-container">
-              <Link to="/quest/list">
+              <Link to="/quests/list">
                 <Button color="info" size="lg">
                   Quests List
                 </Button>
