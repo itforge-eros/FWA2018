@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
+import { Link } from 'react-router-dom';
 
 import { firestore } from '../../../firebase';
 
@@ -107,6 +108,11 @@ class UserList extends Component {
                     </td>
                     <td>{user.year}</td>
                     <td>
+                      <Link to={`/admin/user/detail/${user.id}`}>
+                        <Button color="primary" size="sm">
+                          View / Edit
+                        </Button>
+                      </Link>{' '}
                       <Button
                         color="danger"
                         size="sm"

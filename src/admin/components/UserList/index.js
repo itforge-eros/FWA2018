@@ -29,13 +29,14 @@ class UserList extends Component {
 
   getList() {
     this.setState({ loading: true, users: [] });
+    console.log(this.state.year.toString());
     firestore
       .collection('profile')
       .where('create', '==', true)
       .get()
       .then((querySnapshot) => {
         let users = [];
-        querySnapshot.forEach((doc) => {
+        querySnapshot.forEach(async (doc) => {
           users.push({ ...doc.data().info, id: doc.id, approve: doc.data().approve });
         });
         users.sort((a, b) => parseInt(a.student_id, 10) - parseInt(b.student_id, 10));
@@ -75,6 +76,7 @@ class UserList extends Component {
 
   changeYear(year) {
     this.setState({ year: year });
+    this.getList();
   }
 
   render() {
@@ -169,7 +171,13 @@ class UserList extends Component {
                   </td>
                 </tr>
               ) : (
-                ''
+                <tr>
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                  <td />
+                </tr>
               );
             })}
           </tbody>

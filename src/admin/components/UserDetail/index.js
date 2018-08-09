@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
@@ -30,7 +30,7 @@ const UserDetail = (props) => {
     admin: {
       loading,
       displayName,
-      form: { nickname, prefix, firstname, lastname, student_id, branch, address, introduction, year }
+      form: { nickname, prefix, firstname, lastname, student_id, branch, address, introduction, year, friend }
     },
     match: {
       params: { id }
@@ -106,6 +106,12 @@ const UserDetail = (props) => {
           <Label for="introduction">แนะนำตัวสั้นๆกันหน่อย!</Label>
           <Input name="introduction" onChange={(e) => setForm('introduction', e.target.value)} value={introduction} />
         </FormGroup>
+        <Row>
+          <Col className="UserDetailFriend">
+            เพื่อนทั้งหมด: {friend['1'] + friend['2'] + friend['3'] + friend['4']} คน, ปี 1: {friend['1']} คน, ปี 2:{' '}
+            {friend['2']} คน, ปี 3: {friend['3']} คน, ปี 4: {friend['4']} คน
+          </Col>
+        </Row>
         <div className="Submit-btn">
           <Link to="/admin/user/list">
             <Button color="danger">
@@ -135,7 +141,8 @@ UserDetail.propTypes = {
       branch: PropTypes.string,
       address: PropTypes.string,
       introduction: PropTypes.string,
-      year: PropTypes.string
+      year: PropTypes.string,
+      friend: PropTypes.object
     })
   }),
   match: PropTypes.shape({

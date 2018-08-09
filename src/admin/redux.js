@@ -79,7 +79,12 @@ const action = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case ADMIN_SET_FORM_DEFAULT_FULFILLED:
-      return { ...state, ...action.payload, form: { ...action.payload.info }, loading: false };
+      return {
+        ...state,
+        ...action.payload,
+        form: { ...action.payload.info, friend: action.payload.friend },
+        loading: false
+      };
 
     case ADMIN_EDIT_PROFILE_PENDING:
       return { ...state, loading: true };
@@ -128,8 +133,46 @@ export const setFormDefault = (id) => ({
     .collection('profile')
     .doc(id)
     .get()
-    .then((doc) => {
-      return doc.data();
+    .then(async (doc) => {
+      let y1 = await firestore
+        .collection('profile')
+        .doc(doc.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '1')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+      let y2 = await firestore
+        .collection('profile')
+        .doc(doc.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '2')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+      let y3 = await firestore
+        .collection('profile')
+        .doc(doc.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '3')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+      let y4 = await firestore
+        .collection('profile')
+        .doc(doc.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '4')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+
+      let friend = { 1: y1, 2: y2, 3: y3, 4: y4 };
+      return { ...doc.data(), friend };
     })
 });
 
