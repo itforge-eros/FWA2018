@@ -7,6 +7,8 @@ import { firestore } from '../../../firebase';
 
 import { Container, Table, Button, Row, Col } from 'reactstrap';
 
+import QuestParticipantAdd from '../QuestParticipantAdd';
+
 import './QuestParticipant.css';
 
 const enhance = compose(
@@ -76,7 +78,9 @@ class UserList extends Component {
     ) : (
       <Container>
         <Row>
-          <Col className="Paticipants-Head">Test</Col>
+          <Col className="Paticipants-Head">
+            <QuestParticipantAdd quest_id={id} />
+          </Col>
         </Row>
         <Table hover className="QuestParticipant">
           <thead>
