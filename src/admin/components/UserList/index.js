@@ -171,13 +171,7 @@ class UserList extends Component {
                   </td>
                 </tr>
               ) : (
-                <tr>
-                  <td />
-                  <td />
-                  <td />
-                  <td />
-                  <td />
-                </tr>
+                ''
               );
             })}
           </tbody>
