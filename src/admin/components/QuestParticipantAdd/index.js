@@ -40,6 +40,90 @@ class QuestParticipantAdd extends Component {
     this.setState({ student_id: value });
   }
 
+  async addAll(quest_id) {
+    for (let i = 61070001; i < 61070369; i++) {
+      this.setState({
+        student_id: i.toString()
+      });
+
+      await this.addParticipant(quest_id);
+    }
+  }
+
+  async addAllbyHunt(quest_id) {
+    for (let i = 61070000; i < 61070369; i++) {
+      this.setState({
+        student_id: i.toString()
+      });
+
+      let profile = await firestore
+        .collection('profile')
+        .where('info.student_id', '==', this.state.student_id)
+        .get()
+        .then((querySnapshot) => {
+          let students = [];
+          querySnapshot.forEach((doc) => {
+            students.push({ ...doc.data(), id: doc.id });
+          });
+          return students;
+        });
+      profile = profile[0];
+
+      if (typeof profile === 'undefined') {
+        this.setState({
+          student_id: '',
+          message: 'Profile not found',
+          error: true
+        });
+        continue;
+      }
+
+      let y1 = await firestore
+        .collection('profile')
+        .doc(profile.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '1')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+
+      let y2 = await firestore
+        .collection('profile')
+        .doc(profile.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '2')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+      let y3 = await firestore
+        .collection('profile')
+        .doc(profile.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '3')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+      let y4 = await firestore
+        .collection('profile')
+        .doc(profile.id)
+        .collection('friends')
+        .where('profile.info.year', '==', '4')
+        .get()
+        .then((doc) => {
+          return doc.size;
+        });
+
+      let friend = { 1: y1, 2: y2, 3: y3, 4: y4 };
+
+      if (friend[1] >= 100 && friend[2] >= 30 && friend[3] >= 10 && friend[4] >= 5) {
+        await this.addParticipant(quest_id);
+      }
+    }
+  }
+
   async addParticipant(quest_id) {
     if (this.state.student_id === '') {
       return;
@@ -112,7 +196,7 @@ class QuestParticipantAdd extends Component {
         <Container>
           <Form onKeyDown={(e) => this.keyEnterPress(e)}>
             <Row className="QuestParticipantAdd-Container">
-              <Col md="11">
+              <Col>
                 <Input
                   type="text"
                   placeholder="Student ID"
@@ -120,9 +204,15 @@ class QuestParticipantAdd extends Component {
                   value={this.state.student_id}
                 />
               </Col>
-              <Col md="1">
+              <Col>
                 <Button color="success" onClick={() => this.addParticipant(quest_id)}>
                   Add
+                </Button>{' '}
+                <Button color="warning" onClick={() => this.addAllbyHunt(quest_id)}>
+                  Add by Hunt
+                </Button>{' '}
+                <Button color="danger" onClick={() => this.addAll(quest_id)}>
+                  Add All
                 </Button>
               </Col>
             </Row>
