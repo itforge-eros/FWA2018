@@ -14,125 +14,125 @@ firestore.settings({
   timestampsInSnapshots: true
 });
 
-exports.friend = functions.https.onRequest(async (request, response) => {
-  // Check request method
-  if (request.method !== 'POST') {
-    return response.status(200).send({
-      message: 'I am not happy'
-    });
-  }
+// exports.friend = functions.https.onRequest(async (request, response) => {
+//   // Check request method
+//   if (request.method !== 'POST') {
+//     return response.status(200).send({
+//       message: 'I am not happy'
+//     });
+//   }
 
-  // Get current key
-  let key = await firestore
-    .collection('config')
-    .doc('random')
-    .get()
-    .then((doc) => doc.data().value)
-    .catch((err) => {
-      console.error(err);
-    });
+//   // Get current key
+//   let key = await firestore
+//     .collection('config')
+//     .doc('random')
+//     .get()
+//     .then((doc) => doc.data().value)
+//     .catch((err) => {
+//       console.error(err);
+//     });
 
-  // Get some id
-  let id = request.body.id;
-  if (id.length > 36) {
-    id = id.substring(36);
-  }
-  let requester = request.body.requester;
-  let userkey = id.substring(0, 8);
-  let userid = id.substring(8);
+//   // Get some id
+//   let id = request.body.id;
+//   if (id.length > 36) {
+//     id = id.substring(36);
+//   }
+//   let requester = request.body.requester;
+//   let userkey = id.substring(0, 8);
+//   let userid = id.substring(8);
 
-  // Key validation
-  if (userkey !== key) {
-    return response.status(200).send({
-      error: true,
-      message: 'Key not valid'
-    });
-  }
+//   // Key validation
+//   if (userkey !== key) {
+//     return response.status(200).send({
+//       error: true,
+//       message: 'Key not valid'
+//     });
+//   }
 
-  if (requester === userid) {
-    return response.status(200).send({
-      error: true,
-      message: 'แอดตัวเองไม่ได้นะ~'
-    });
-  }
+//   if (requester === userid) {
+//     return response.status(200).send({
+//       error: true,
+//       message: 'แอดตัวเองไม่ได้นะ~'
+//     });
+//   }
 
-  // Check requester
-  let profile = await firestore
-    .collection('profile')
-    .doc(requester)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        return doc.data();
-      } else {
-        return false;
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+//   // Check requester
+//   let profile = await firestore
+//     .collection('profile')
+//     .doc(requester)
+//     .get()
+//     .then((doc) => {
+//       if (doc.exists) {
+//         return doc.data();
+//       } else {
+//         return false;
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
 
-  if (!profile)
-    return response.status(404).send({
-      error: true,
-      message: 'Profile not found!'
-    });
+//   if (!profile)
+//     return response.status(404).send({
+//       error: true,
+//       message: 'Profile not found!'
+//     });
 
-  let requester_profile = profile;
+//   let requester_profile = profile;
 
-  // Check destination
-  profile = await firestore
-    .collection('profile')
-    .doc(userid)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        return doc.data();
-      } else {
-        return false;
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+//   // Check destination
+//   profile = await firestore
+//     .collection('profile')
+//     .doc(userid)
+//     .get()
+//     .then((doc) => {
+//       if (doc.exists) {
+//         return doc.data();
+//       } else {
+//         return false;
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
 
-  if (!profile)
-    return response.status(404).send({
-      error: true,
-      message: 'Profile not found!'
-    });
+//   if (!profile)
+//     return response.status(404).send({
+//       error: true,
+//       message: 'Profile not found!'
+//     });
 
-  let destination_profile = profile;
+//   let destination_profile = profile;
 
-  // New date now
-  let add = Date.now();
+//   // New date now
+//   let add = Date.now();
 
-  // Add to requester profile
-  firestore
-    .collection('profile')
-    .doc(requester)
-    .collection('friends')
-    .doc(userid)
-    .set({
-      add,
-      profile: destination_profile
-    });
+//   // Add to requester profile
+//   firestore
+//     .collection('profile')
+//     .doc(requester)
+//     .collection('friends')
+//     .doc(userid)
+//     .set({
+//       add,
+//       profile: destination_profile
+//     });
 
-  // Add to requester destination profile
-  firestore
-    .collection('profile')
-    .doc(userid)
-    .collection('friends')
-    .doc(requester)
-    .set({
-      add,
-      profile: requester_profile
-    });
-  return response.status(200).send({
-    error: false,
-    message: 'success'
-  });
-});
+//   // Add to requester destination profile
+//   firestore
+//     .collection('profile')
+//     .doc(userid)
+//     .collection('friends')
+//     .doc(requester)
+//     .set({
+//       add,
+//       profile: requester_profile
+//     });
+//   return response.status(200).send({
+//     error: false,
+//     message: 'success'
+//   });
+// });
 
 exports.random = functions.https.onRequest(async (request, response) => {
   let key = functions.config().random.key;
